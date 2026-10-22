@@ -2,5 +2,6 @@
   "obsidian-latex-suite",
   "quick-latex",
   "lean-syntax-highlight",
-  "lean"
+  "lean",
+  "obsidian-git"
 ]
