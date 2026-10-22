@@ -1,0 +1,69 @@
+``` lean
+#check true
+#print true
+#eval true
+```
+
+ 
+
+cose cososse 
+
+
+## Proofs basics
+
+`rfl` 'spacchetta' le definizioni date performando i calcoli che ritiene rilevanti. Se alla fine le due definizioni si riducono alla stessa espressione, la dimostrazione ha risultato positivo.
+
+`intro x` istanzia una variabile quantificata universalmente. ($\forall$x)
+
+Nota che in `intro a` al posto di 'a' avrei potuto scegliere un nome qualsiasi: non è legato al nome dato nella definizione del teorema.
+
+`simp [f]` o anche `simp` è una tattica che applica una serie di semplificazioni attraverso delle regole standard.
+
+
+
+##### Esempi:
+``` lean
+-- date la funzioni:
+def andB (a b : Bool) : Bool :=
+  a && b
+
+def norB (a b : Bool) : Bool :=
+  !(a||b)
+
+
+-- intro e rfl
+theorem false_and_any_is_false_forall :
+  ∀ (a: Bool), andB false a = false := by
+  intro a   --- instantiate the universally quantified variable
+  rfl
+
+-- simp
+theorem and_true_right (b : Bool) : andB b true = b := by
+  simp [andB] --- unfold andB and apply known simplification rules for &&
+  
+-- Metodo alternativo tramite 'case analysis'
+theorem and_true_right_cases (b : Bool) : andB b true = b := by
+  cases b with
+  | false => rfl
+  | true  => rfl
+  
+  
+  
+-- è possibile farlo più corto?
+theorem nor_commutative (a b : Bool) :
+    norB a b = norB b a := by
+    simp[norB]
+    cases a with
+    | false => cases b with 
+        | true => rfl
+        | false => rfl
+    | true => cases b with 
+        | true => rfl
+        | false => rfl
+        
+-- <;> applica l'operazione finale (in questo caso rfl) a tutti i sottogol generati
+theorem nor_commutative2(a b : Bool) : norB a b = norB b a := by 
+  simp [norB] 
+  cases a <;> cases b <;> rfl
+
+```
