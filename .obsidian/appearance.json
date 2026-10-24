@@ -1,4 +1,6 @@
 {
   "cssTheme": "Maple",
-  "accentColor": "#197635"
+  "accentColor": "#197635",
+  "interfaceFontFamily": "GohuFont 11 Nerd Font",
+  "textFontFamily": "GohuFont 11 Nerd Font"
 }

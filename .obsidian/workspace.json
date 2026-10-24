@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LIP/Lean 1.md",
+                "file": "LIP/Dimostrazioni in lean.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lean 1"
+              "title": "Dimostrazioni in lean"
             }
           }
         ],
@@ -126,7 +126,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ffae741f6f0fbc68",
@@ -220,6 +221,16 @@
               "icon": "git-pull-request",
               "title": "Source Control"
             }
+          },
+          {
+            "id": "6dbbe28388a51aff",
+            "type": "leaf",
+            "state": {
+              "type": "lean4-proof-goals",
+              "state": {},
+              "icon": "sigma",
+              "title": "Lean 4 goals"
+            }
           }
         ],
         "currentTab": 5
@@ -241,10 +252,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2ca512e3a7168233",
+  "active": "6b667f002aad471e",
   "lastOpenFiles": [
-    "DB/Operazioni di combinazione.md",
     "LIP/Lean 1.md",
+    "LIP/Dimostrazioni in lean.md",
+    "LIP/Lean 2.md",
+    "DB/Operazioni di combinazione.md",
     "DB/Creazione tabelle.md",
     "DB/Selezione.md",
     "DB/Alter tabelle.md",
