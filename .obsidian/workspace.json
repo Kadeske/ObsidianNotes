@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LIP/Induction.md",
+                "file": "LIP/Dimostrazioni in lean.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Induction"
+              "title": "Dimostrazioni in lean"
             }
           }
         ],
@@ -126,8 +126,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "ffae741f6f0fbc68",
@@ -254,8 +253,8 @@
   },
   "active": "2ca512e3a7168233",
   "lastOpenFiles": [
-    "LIP/Dimostrazioni in lean.md",
     "LIP/Induction.md",
+    "LIP/Dimostrazioni in lean.md",
     "LIP/Lean 1.md",
     "LIP/Lean 2.md",
     "DB/Operazioni di combinazione.md",
