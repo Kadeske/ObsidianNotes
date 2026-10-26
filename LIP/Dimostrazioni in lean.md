@@ -278,6 +278,6 @@ dopo apply succN_injective a b:
 
 L'ultimo goal è esattamente `h`, quindi `exact h` chiude la dimostrazione.
 -/
-
-
 ```
+
+
