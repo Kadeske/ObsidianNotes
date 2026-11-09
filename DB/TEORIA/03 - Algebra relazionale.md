@@ -824,15 +824,15 @@ $$\pi_{\text{NomeAzienda}}\Big(\text{AZIENDA} \bowtie_{\text{CodiceA}=A1} \sigma
 
 ### Controlli prima di consegnare
 
-| Controllo | Perché |
-|---|---|
-| Ogni $\sigma$ usa solo attributi **ancora presenti** nel suo operando | $\sigma$ dopo un $\pi$ che ha eliminato l'attributo è un **errore sintattico** |
-| $\cup$, $\cap$ e $-$ hanno operandi con **lo stesso schema** | Altrimenti l'operazione non è definita: usa $\rho$ |
+| Controllo                                                                            | Perché                                                                                 |
+| ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Ogni $\sigma$ usa solo attributi **ancora presenti** nel suo operando                | $\sigma$ dopo un $\pi$ che ha eliminato l'attributo è un **errore sintattico**         |
+| $\cup$, $\cap$ e $-$ hanno operandi con **lo stesso schema**                         | Altrimenti l'operazione non è definita: usa $\rho$                                     |
 | Nel join naturale gli attributi omonimi sono **solo** quelli su cui si vuole il join | Attributi omonimi non voluti (es. `Città`, `Nome`) restringono il risultato per errore |
-| Nella differenza si parte dall'insieme **completo** giusto | `Impiegato` include anche chi non partecipa a nessun progetto, `Partecipazione` no |
-| Le condizioni sui `NULL` usano `IS NULL` | Un confronto con `NULL` non è mai vero |
-| La proiezione **elimina i duplicati** | Il risultato è un insieme |
-| Si scrivono sia la **formula** sia l'**albero** | È richiesto all'esame |
+| Nella differenza si parte dall'insieme **completo** giusto                           | `Impiegato` include anche chi non partecipa a nessun progetto, `Partecipazione` no     |
+| Le condizioni sui `NULL` usano `IS NULL`                                             | Un confronto con `NULL` non è mai vero                                                 |
+| La proiezione **elimina i duplicati**                                                | Il risultato è un insieme                                                              |
+| Si scrivono sia la **formula** sia l'**albero**                                      | È richiesto all'esame                                                                  |
 
 ### Cardinalità
 
