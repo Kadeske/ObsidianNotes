@@ -18,10 +18,10 @@
 
 ### Linguaggi dichiarativi vs procedurali
 
-| **Dichiarativi** | **Procedurali** |
-|---|---|
+| **Dichiarativi**                                                | **Procedurali**                                                            |
+| --------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | Specificano le **proprietà** del risultato: *che cosa* si vuole | Specificano le **modalità** di generazione del risultato: *come* ottenerlo |
-| Es. SQL (parzialmente) | Es. **algebra relazionale** |
+| Es. SQL (parzialmente)                                          | Es. **algebra relazionale**                                                |
 
 ### Che cos'è
 Un insieme di **operatori** che:

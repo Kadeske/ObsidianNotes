@@ -4,28 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "ea9f52e41c67a915",
-        "type": "tabs",
-        "dimension": 38.663967611336034,
-        "children": [
-          {
-            "id": "97d9eaebf8180b98",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "DB/TEORIA/PDF/02 - DBMS e Modello Relazionale.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "02 - DBMS e Modello Relazionale"
-            }
-          }
-        ]
-      },
-      {
         "id": "cefffc586e3c1a1b",
         "type": "tabs",
-        "dimension": 61.336032388663966,
         "children": [
           {
             "id": "214aff0e51682583",
@@ -33,12 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
+                "file": "DB/TEORIA/Esercizi_algebra_relazionale.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Esercizi_algebra_relazionale"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5ac36a36b2a4d30f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c3073a99d5679923",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DB/TEORIA/Dispense_algebra_relazionale.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02 - DBMS e Modello Relazionale"
+              "title": "Dispense_algebra_relazionale"
             }
           }
         ]
@@ -252,10 +252,16 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "97d9eaebf8180b98",
+  "active": "c3073a99d5679923",
   "lastOpenFiles": [
-    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
+    "DB/TEORIA/Esercizi_algebra_relazionale.md",
+    "DB/TEORIA/PDF/03 - Algebra relazionale.pdf",
+    "DB/TEORIA/Dispense_algebra_relazionale.md",
+    "DB/TEORIA/Esercizi_algebra_relazionale.md.tmp.39454.236bdb59fb40",
+    "DB/TEORIA/03 - Algebra relazionale.md",
+    "DB/TEORIA/Dispense_algebra_relazionale.md.tmp.39454.dbe97e256b69",
     "DB/TEORIA/PDF/02 - DBMS e Modello Relazionale.pdf",
+    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
     "DB/TEORIA/PDF/01 - Introduzione al corso.pdf",
     "DB/TEORIA/01 - Introduzione al corso.md",
     "IUM/TEORIA/img/IUM07-kanizsa.png",
@@ -279,15 +285,11 @@
     "IUM/TEORIA/img/IUM05-gerarchia.png",
     "IUM/TEORIA/05 - Scenari e modelli dei task.md",
     "IUM/TEORIA/04 - Requisiti e Personas.md.tmp.8623.e782ec17fb65",
-    "IUM/TEORIA/03 - Interaction Design.md.tmp.8623.e8bf4996e2b3",
-    "IUM/TEORIA/00 - Introduzione al corso.md.tmp.8623.9509b390718c",
-    "IUM/TEORIA/00 - Introduzione al corso.md.tmp.8623.1fd39b8f9320",
     "IUM/TEORIA/img/IUM08-saccadi.jpg",
     "IUM/TEORIA/img/IUM08-ricostruzione-semantica.jpg",
     "IUM/TEORIA/img/IUM08-f-shape.jpg",
     "IUM/TEORIA/img/IUM07-prospettiva-aerea.jpg",
     "IUM/TEORIA/img/IUM07-occlusione.jpg",
-    "DB/TEORIA/03 - Algebra relazionale.md",
     "DB/LAB/Selezione.md",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
     "DB/TEORIA/06 - Database per Big Data ed AI.md",
@@ -296,8 +298,6 @@
     "LIP/Lean/Dimostrazioni/6.Have.md",
     "LIP/Lean/higher-order functions.md",
     "LIP/Lean/definizione e teoremi usati.md",
-    "Istituzioni di Logica/Lezioni (claude)/Lezione 2 — Il calcolo HK-> dimostrazioni, derivazioni, teorema di deduzione.md",
-    "Istituzioni di Logica/Lezioni (claude)/Lezione 1-Induzione, linguaggio proposizionale, semantica.md",
-    "LIP/Lean/Dimostrazioni/1.Basics.md"
+    "Istituzioni di Logica/Lezioni (claude)/Lezione 2 — Il calcolo HK-> dimostrazioni, derivazioni, teorema di deduzione.md"
   ]
 }

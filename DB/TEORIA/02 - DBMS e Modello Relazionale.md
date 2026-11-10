@@ -425,6 +425,7 @@ Come rappresentare un valore che non si conosce (es. la quantità di Scalari nel
 
 > [!definition] Chiave
 > $K$ è **chiave** per $r$ se è una **superchiave minimale**, cioè non contiene propriamente un'altra superchiave.
+> K è minimale se non posso togliere nessun attributo senza perdere l'unicità. 
 
 **Interpretazione** (relazione `Vasca`):
 - Se `NomeV` è chiave → non possono esistere due vasche con lo stesso nome.
