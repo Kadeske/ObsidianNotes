@@ -4,21 +4,41 @@
     "type": "split",
     "children": [
       {
-        "id": "08c63f7d8a0bed51",
+        "id": "ea9f52e41c67a915",
         "type": "tabs",
+        "dimension": 38.663967611336034,
         "children": [
           {
-            "id": "e226561b702f79b8",
+            "id": "97d9eaebf8180b98",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "DB/TEORIA/PDF/02 - DBMS e Modello Relazionale.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "02 - DBMS e Modello Relazionale"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cefffc586e3c1a1b",
+        "type": "tabs",
+        "dimension": 61.336032388663966,
+        "children": [
+          {
+            "id": "214aff0e51682583",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IUM/TEORIA/09 - Udito, tatto e movimento.md",
-                "mode": "preview",
+                "file": "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "09 - Udito, tatto e movimento"
+              "title": "02 - DBMS e Modello Relazionale"
             }
           }
         ]
@@ -83,7 +103,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "ffae741f6f0fbc68",
@@ -231,18 +252,24 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e226561b702f79b8",
+  "active": "97d9eaebf8180b98",
   "lastOpenFiles": [
+    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
+    "DB/TEORIA/PDF/02 - DBMS e Modello Relazionale.pdf",
+    "DB/TEORIA/PDF/01 - Introduzione al corso.pdf",
+    "DB/TEORIA/01 - Introduzione al corso.md",
+    "IUM/TEORIA/img/IUM07-kanizsa.png",
+    "IUM/TEORIA/img/IUM06.5-sistemi-navigazione.png",
+    "IUM/TEORIA/03 - Interaction Design.md",
+    "IUM/TEORIA/00 - Introduzione al corso.md",
+    "IUM/TEORIA/09 - Udito, tatto e movimento.md",
     "IUM/TEORIA/img/IUM09-angoli-attivi.png",
     "IUM/TEORIA/img/IUM08-golden-triangle.jpg",
     "IUM/TEORIA/06 - Prototipi ed euristiche di Nielsen.md",
     "IUM/TEORIA/04 - Requisiti e Personas.md",
-    "IUM/TEORIA/03 - Interaction Design.md",
     "IUM/TEORIA/02 - Definizioni e terminologia.md",
     "IUM/TEORIA/01 - Perché studiare HCI.md",
-    "IUM/TEORIA/00 - Introduzione al corso.md",
     "IUM/TEORIA/PDF/01-perche-hci.pdf",
-    "IUM/TEORIA/09 - Udito, tatto e movimento.md",
     "IUM/TEORIA/08 - Il processo di lettura.md",
     "IUM/TEORIA/08 - Il processo di lettura.md.tmp.8623.606ad7e36a9d",
     "IUM/TEORIA/07 - La componente umana e la percezione visiva.md",
@@ -260,14 +287,7 @@
     "IUM/TEORIA/img/IUM08-f-shape.jpg",
     "IUM/TEORIA/img/IUM07-prospettiva-aerea.jpg",
     "IUM/TEORIA/img/IUM07-occlusione.jpg",
-    "IUM/TEORIA/img/IUM07-grandezza-relativa.jpg",
-    "IUM/TEORIA/img/IUM07-disparita-binoculare.jpg",
-    "IUM/TEORIA/img/IUM06-schizzo-interazione.jpg",
-    "IUM/TEORIA/img",
-    "IUM/TEORIA/PDF/00-intro.pdf",
     "DB/TEORIA/03 - Algebra relazionale.md",
-    "DB/TEORIA/01 - Introduzione al corso.md",
-    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
     "DB/LAB/Selezione.md",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
     "DB/TEORIA/06 - Database per Big Data ed AI.md",

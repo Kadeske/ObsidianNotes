@@ -24,6 +24,11 @@ Il **modello relazionale**, proposto negli anni '70, è ancora oggi lo standard 
 - **Informazione**: notizia, nozione, elemento che consente di avere conoscenza più o meno esatta di fatti, situazioni, modi di essere.
 - **Dato**: ciò che è immediatamente presente alla conoscenza, prima di ogni elaborazione; in informatica, *elementi di informazione costituiti da simboli che devono essere elaborati*.
 
+Io preferisco dire:
+- *Dato*: nozione primitiva priva di contesto es. un numero
+- *Informazione*: dato contestualizzato (quindi elaborato) es. numero -> anno corrente
+
+
 Le informazioni vengono gestite in forme diverse (idee informali, linguaggio naturale, disegni e schemi, sistemi informatici) e su supporti diversi (mente umana, carta, dispositivi elettronici).
 
 I DBMS relazionali trattano **dati**, non informazioni: i dati sono spesso il risultato di un'**organizzazione schematica** delle informazioni (es. anagrafe: Nome, Cognome, Codice fiscale, Data di nascita, Indirizzo).
@@ -88,6 +93,10 @@ erDiagram
 
 - **Schema**: la struttura **statica** della base di dati (es. l'intestazione della tabella).
 - **Istanza**: i **valori attuali**, che possono cambiare nel tempo (il "corpo" della tabella).
+
+in poche parole:
+- schema: "La forma"
+- istanza: "Il contenuto"
 
 | Insegnamento | Docente | Aula | Ora |
 |---|---|---|---|
