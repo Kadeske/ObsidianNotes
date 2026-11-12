@@ -429,11 +429,11 @@ Per $R_1(A, B)$ e $R_2(B, C)$:
 - **Cosa specificare**: il **lato** (sinistro, destro o completo) più la condizione di join, esplicita come nell'equi-join oppure implicita come nel join naturale.
 - **Cardinalità**: almeno quella del join interno corrispondente.
 
-| Tipo | Conserva |
-|---|---|
-| **Sinistro** ⟕ | tutte le tuple del **primo** operando |
-| **Destro** ⟖ | tutte le tuple del **secondo** operando |
-| **Completo** ⟗ | tutte le tuple di **entrambi** |
+| Tipo           | Conserva                                |
+| -------------- | --------------------------------------- |
+| **Sinistro** ⟕ | tutte le tuple del **primo** operando   |
+| **Destro** ⟖   | tutte le tuple del **secondo** operando |
+| **Completo** ⟗ | tutte le tuple di **entrambi**          |
 
 Si usano quando la richiesta dice "**anche** quelli senza…".
 
@@ -575,20 +575,20 @@ Con un self-join si raggiungono i prerequisiti di livello 2 ([[#11. Self-join|es
 
 ## Tabella riassuntiva degli operatori
 
-| Operatore | Simbolo | Sintassi formale | Esempio sulle tabelle della dispensa | Schema del risultato | Cardinalità |
-|---|---|---|---|---|---|
-| [[#2. Selezione\|Selezione]] | $\sigma$ | $\sigma_F(R)$ | $\sigma_{\text{Città}=\text{'Cagliari'}}(\text{STUDENTI})$ | uguale a $R$ | $\le \lvert R\rvert$ |
-| [[#3. Proiezione\|Proiezione]] | $\pi$ | $\pi_{A_1,\dots,A_k}(R)$ | $\pi_{\text{Nome},\text{Città}}(\text{STUDENTI})$ | $A_1,\dots,A_k$ | $\le \lvert R\rvert$ ($=$ se superchiave) |
-| [[#4. Ridenominazione\|Ridenominazione]] | $\rho$ | $\rho_{B_1,\dots,B_k \leftarrow A_1,\dots,A_k}(R)$ | $\rho_{\text{Matricola} \leftarrow \text{Studente}}(\text{ESAMI})$ | attributi rinominati | $= \lvert R\rvert$ |
-| [[#5.1 Unione\|Unione]] | $\cup$ | $R \cup S$ (stesso schema) | $\text{STUDENTI} \cup \text{TUTOR}$ | uguale | $\le \lvert R\rvert + \lvert S\rvert$ |
-| [[#5.2 Intersezione\|Intersezione]] | $\cap$ | $R \cap S$ (stesso schema) | $\text{STUDENTI} \cap \text{TUTOR}$ | uguale | $\le \min(\lvert R\rvert, \lvert S\rvert)$ |
-| [[#5.3 Differenza\|Differenza]] | $-$ | $R - S$ (stesso schema) | $\text{STUDENTI} - \text{TUTOR}$ | uguale | $\le \lvert R\rvert$ |
-| [[#6. Prodotto cartesiano\|Prodotto cartesiano]] | $\times$ | $R \times S$ | $\pi_{\text{Matricola}}(\text{STUDENTI}) \times \pi_{\text{Codice}}(\text{CORSI})$ | $X_R \cup X_S$ (disgiunti) | $= \lvert R\rvert \cdot \lvert S\rvert$ |
-| [[#7. Theta-join\|Theta-join]] | $\bowtie_F$ | $R \bowtie_F S = \sigma_F(R \times S)$ | $\text{ESAMI} \bowtie_{\text{Voto} > \text{V2}} \rho_{\text{S2},\text{C2},\text{V2} \leftarrow \text{Studente},\text{Corso},\text{Voto}}(\text{ESAMI})$ | $X_R \cup X_S$ | $\le \lvert R\rvert \cdot \lvert S\rvert$ |
-| [[#8. Equi-join\|Equi-join]] | $\bowtie_{A=B}$ | $R \bowtie_{A=B} S$ | $\text{ESAMI} \bowtie_{\text{Studente}=\text{Matricola}} \text{STUDENTI}$ | $X_R \cup X_S$ (entrambe le colonne) | $\le \lvert R\rvert \cdot \lvert S\rvert$ |
-| [[#9. Join naturale\|Join naturale]] | $\bowtie$ | $R \bowtie S$ | $\text{CORSI} \bowtie \rho_{\text{Docente} \leftarrow \text{IdDoc}}(\text{DOCENTI})$ | $X_R \cup X_S$ (comuni una volta) | $\le \lvert R\rvert \cdot \lvert S\rvert$ |
-| [[#10. Join esterni (outer join)\|Join esterno sinistro]] | ⟕ | `R ⟕ F S` | `STUDENTI ⟕ Matricola=Studente ESAMI` | come il join, con `NULL` | $\ge$ join interno |
-| [[#10. Join esterni (outer join)\|Join esterno destro]] | ⟖ | `R ⟖ F S` | `CORSI ⟖ Docente=IdDoc DOCENTI` | come il join, con `NULL` | $\ge$ join interno |
-| [[#10. Join esterni (outer join)\|Join esterno completo]] | ⟗ | `R ⟗ F S` | `STUDENTI ⟗ DOCENTI` (su `Città`, dopo $\pi$ e $\rho$) | come il join, con `NULL` | $\ge$ join interno |
-| [[#11. Self-join\|Self-join]] | $\rho$ + $\bowtie$ / $\times$ | $\sigma_F(R \times \rho_{\dots}(R))$ | $\pi_{S1}(\sigma_{S1=S2 \wedge C1 \neq C2}(\text{E1} \times \text{E2}))$ | attributi rinominati | dipende dalla condizione |
-| [[#12. Divisione (per ogni)\|Divisione ("per ogni")]] | doppia $-$ | $\pi_A(R) - \pi_A((\pi_A(R) \times S) - T)$ | studenti con tutti i corsi da 9 CFU | $A$ | $\le \lvert \pi_A(R)\rvert$ |
+| Operatore                                                 | Simbolo                       | Sintassi formale                                   | Esempio sulle tabelle della dispensa                                                                                                                    | Schema del risultato                 | Cardinalità                                |
+| --------------------------------------------------------- | ----------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------ |
+| [[#2. Selezione\|Selezione]]                              | $\sigma$                      | $\sigma_F(R)$                                      | $\sigma_{\text{Città}=\text{'Cagliari'}}(\text{STUDENTI})$                                                                                              | uguale a $R$                         | $\le \lvert R\rvert$                       |
+| [[#3. Proiezione\|Proiezione]]                            | $\pi$                         | $\pi_{A_1,\dots,A_k}(R)$                           | $\pi_{\text{Nome},\text{Città}}(\text{STUDENTI})$                                                                                                       | $A_1,\dots,A_k$                      | $\le \lvert R\rvert$ ($=$ se superchiave)  |
+| [[#4. Ridenominazione\|Ridenominazione]]                  | $\rho$                        | $\rho_{B_1,\dots,B_k \leftarrow A_1,\dots,A_k}(R)$ | $\rho_{\text{Matricola} \leftarrow \text{Studente}}(\text{ESAMI})$                                                                                      | attributi rinominati                 | $= \lvert R\rvert$                         |
+| [[#5.1 Unione\|Unione]]                                   | $\cup$                        | $R \cup S$ (stesso schema)                         | $\text{STUDENTI} \cup \text{TUTOR}$                                                                                                                     | uguale                               | $\le \lvert R\rvert + \lvert S\rvert$      |
+| [[#5.2 Intersezione\|Intersezione]]                       | $\cap$                        | $R \cap S$ (stesso schema)                         | $\text{STUDENTI} \cap \text{TUTOR}$                                                                                                                     | uguale                               | $\le \min(\lvert R\rvert, \lvert S\rvert)$ |
+| [[#5.3 Differenza\|Differenza]]                           | $-$                           | $R - S$ (stesso schema)                            | $\text{STUDENTI} - \text{TUTOR}$                                                                                                                        | uguale                               | $\le \lvert R\rvert$                       |
+| [[#6. Prodotto cartesiano\|Prodotto cartesiano]]          | $\times$                      | $R \times S$                                       | $\pi_{\text{Matricola}}(\text{STUDENTI}) \times \pi_{\text{Codice}}(\text{CORSI})$                                                                      | $X_R \cup X_S$ (disgiunti)           | $= \lvert R\rvert \cdot \lvert S\rvert$    |
+| [[#7. Theta-join\|Theta-join]]                            | $\bowtie_F$                   | $R \bowtie_F S = \sigma_F(R \times S)$             | $\text{ESAMI} \bowtie_{\text{Voto} > \text{V2}} \rho_{\text{S2},\text{C2},\text{V2} \leftarrow \text{Studente},\text{Corso},\text{Voto}}(\text{ESAMI})$ | $X_R \cup X_S$                       | $\le \lvert R\rvert \cdot \lvert S\rvert$  |
+| [[#8. Equi-join\|Equi-join]]                              | $\bowtie_{A=B}$               | $R \bowtie_{A=B} S$                                | $\text{ESAMI} \bowtie_{\text{Studente}=\text{Matricola}} \text{STUDENTI}$                                                                               | $X_R \cup X_S$ (entrambe le colonne) | $\le \lvert R\rvert \cdot \lvert S\rvert$  |
+| [[#9. Join naturale\|Join naturale]]                      | $\bowtie$                     | $R \bowtie S$                                      | $\text{CORSI} \bowtie \rho_{\text{Docente} \leftarrow \text{IdDoc}}(\text{DOCENTI})$                                                                    | $X_R \cup X_S$ (comuni una volta)    | $\le \lvert R\rvert \cdot \lvert S\rvert$  |
+| [[#10. Join esterni (outer join)\|Join esterno sinistro]] | ⟕                             | `R ⟕ F S`                                          | `STUDENTI ⟕ Matricola=Studente ESAMI`                                                                                                                   | come il join, con `NULL`             | $\ge$ join interno                         |
+| [[#10. Join esterni (outer join)\|Join esterno destro]]   | ⟖                             | `R ⟖ F S`                                          | `CORSI ⟖ Docente=IdDoc DOCENTI`                                                                                                                         | come il join, con `NULL`             | $\ge$ join interno                         |
+| [[#10. Join esterni (outer join)\|Join esterno completo]] | ⟗                             | `R ⟗ F S`                                          | `STUDENTI ⟗ DOCENTI` (su `Città`, dopo $\pi$ e $\rho$)                                                                                                  | come il join, con `NULL`             | $\ge$ join interno                         |
+| [[#11. Self-join\|Self-join]]                             | $\rho$ + $\bowtie$ / $\times$ | $\sigma_F(R \times \rho_{\dots}(R))$               | $\pi_{S1}(\sigma_{S1=S2 \wedge C1 \neq C2}(\text{E1} \times \text{E2}))$                                                                                | attributi rinominati                 | dipende dalla condizione                   |
+| [[#12. Divisione (per ogni)\|Divisione ("per ogni")]]     | doppia $-$                    | $\pi_A(R) - \pi_A((\pi_A(R) \times S) - T)$        | studenti con tutti i corsi da 9 CFU                                                                                                                     | $A$                                  | $\le \lvert \pi_A(R)\rvert$                |

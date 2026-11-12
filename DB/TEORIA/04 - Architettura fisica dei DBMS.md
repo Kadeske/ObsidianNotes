@@ -116,6 +116,13 @@
 
 ## 1.4 File e record
 
+> [!definition] Record (definizione aggiunta, non presente nelle slide)
+> Un **record** è la rappresentazione **fisica** di una **tupla** su disco: la sequenza di byte che contiene i valori dei suoi **campi** (gli attributi).
+> - **Livello logico**: relazione → tuple → attributi.
+> - **Livello fisico**: file → blocchi → record → campi.
+>
+> Ogni tabella è memorizzata in uno o più **file**; ogni file è diviso in **blocchi** (l'unità letta e scritta dal disco); ogni blocco contiene uno o più **record**. Es. la tupla `(55, smith, 02)` di `Employee` diventa un record di 14 byte (2 + 10 + 2), con i campi `E#`, `E.name`, `Dept`.
+
 L'organizzazione interna dei file è gestita **direttamente dal DBMS**: struttura dei singoli blocchi e distribuzione dei record nei blocchi.
 
 ```
