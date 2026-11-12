@@ -28,7 +28,7 @@
               "type": "markdown",
               "state": {
                 "file": "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -246,10 +246,12 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ed210cb97aaf6758",
+  "active": "06a122151edc72fa",
   "lastOpenFiles": [
-    "DB/TEORIA/04 - Architettura fisica dei DBMS.md.tmp.227571.60f5bad042fd",
     "DB/TEORIA/Dispense_algebra_relazionale.md",
+    "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
+    "DB/TEORIA/04 - Architettura fisica dei DBMS.md.tmp.227571.6c024421cd20",
+    "DB/TEORIA/04 - Architettura fisica dei DBMS.md.tmp.227571.60f5bad042fd",
     "LIP/Lean/higher-order functions.md",
     "DB/TEORIA/PDF/03 - Algebra relazionale.pdf",
     "DB/TEORIA/PDF/04 - Architettura fisica dei DBMS.pdf",
@@ -276,9 +278,7 @@
     "IUM/TEORIA/01 - Perché studiare HCI.md",
     "IUM/TEORIA/PDF/01-perche-hci.pdf",
     "IUM/TEORIA/08 - Il processo di lettura.md",
-    "IUM/TEORIA/08 - Il processo di lettura.md.tmp.8623.606ad7e36a9d",
     "IUM/TEORIA/07 - La componente umana e la percezione visiva.md",
-    "IUM/TEORIA/07 - La componente umana e la percezione visiva.md.tmp.8623.f36402bbe8f2",
     "IUM/TEORIA/06.5 - Architettura dell'informazione.md",
     "IUM/TEORIA/img/IUM05-gerarchia.png",
     "IUM/TEORIA/05 - Scenari e modelli dei task.md",
@@ -288,7 +288,6 @@
     "IUM/TEORIA/img/IUM07-prospettiva-aerea.jpg",
     "IUM/TEORIA/img/IUM07-occlusione.jpg",
     "DB/LAB/Selezione.md",
-    "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
     "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
     "DB/LAB/Alter tabelle.md",
     "LIP/Lean/Dimostrazioni/6.Have.md",

@@ -13,6 +13,26 @@
 
 # Parte 1 — Gestione della memoria
 
+## Dal livello logico al livello fisico
+
+Questa unità descrive come i concetti del modello relazionale (lezioni [[02 - DBMS e Modello Relazionale|02]] e [[03 - Algebra relazionale|03]]) vengono realizzati concretamente su disco. La tabella fa da mappa per tutta l'unità (sintesi aggiunta, non presente nelle slide).
+
+| Livello logico (cosa vede l'utente) | Livello fisico (come lo realizza il DBMS) | Cos'è, sul piano fisico | Dove nell'unità |
+|---|---|---|---|
+| **Base di dati** | Insieme di **file** gestiti dal DBMS | Il DBMS organizza da sé il contenuto dei file, senza affidarsi al file system | [[#1.4 File e record\|1.4]] |
+| **Relazione** (tabella) | Uno o più **file** | Sequenza di blocchi che contengono i record della tabella | [[#1.4 File e record\|1.4]] |
+| — (nessun corrispettivo) | **Blocco** su disco · **pagina** in RAM | Unità minima di lettura e scrittura (alcuni KB); la pagina è la copia del blocco nel buffer. Il costo di un'operazione si misura in **numero di blocchi** letti o scritti | [[#1.2 Memoria principale e secondaria\|1.2]], [[#1.3 Buffer manager\|1.3]] |
+| **Tupla** (riga) | **Record** | Sequenza di byte con i valori della tupla | [[#1.4 File e record\|1.4]] |
+| **Attributo** | **Campo** | Porzione del record che contiene il valore di un attributo | [[#1.4 File e record\|1.4]] |
+| **Valore** (con il suo dominio) | **Byte**, secondo formato e lunghezza del campo | Es. intero su 2 byte, stringa di 10 caratteri su 10 byte | [[#Serializzazione dei record\|1.4]] |
+| **Schema** della relazione | **Formato** del record | Formato fisso: lo schema sta nel direttorio · formato auto-descrittivo: i metadati stanno nel record stesso | [[#Serializzazione dei record\|1.4]] |
+| Ordine delle tuple: **irrilevante** | Ordine dei record nei blocchi: **conta** per le prestazioni | Righe intere per blocco (row store) o colonne per blocco (column store); file disordinato (heap) o ordinato su un campo | [[#1.5 Row store vs column store\|1.5]], [[#1.6 Strutture sequenziali\|1.6]] |
+| — (nessun corrispettivo) | **Indice** | Struttura ausiliaria per trovare i record senza leggere tutto il file; cambia i **tempi**, non il **risultato** delle query. Su chiavi primarie e attributi `UNIQUE` viene creato automaticamente | [[#Parte 2 — Indici\|Parte 2]] |
+| **Interrogazione** (SQL, algebra) | **Piano di accesso** | Sequenza di operatori fisici (scansione, accesso diretto, nested-loop, merge-join, hash-join…) scelta dall'ottimizzatore | [[#Parte 3 — Hashing, esecuzione e ottimizzazione delle query\|Parte 3]] |
+
+> [!tip] Indipendenza fisica
+> Tutto ciò che sta nella colonna "livello fisico" si può cambiare (formato dei record, ordine nei file, indici, piani di accesso) **senza modificare** schemi logici, query e programmi: è l'**indipendenza fisica** vista in [[02 - DBMS e Modello Relazionale#1.7 Indipendenza dei dati|DB-02]]. Le due righe senza corrispettivo logico (blocco e indice) esistono solo per le prestazioni.
+
 ## 1.1 Architettura di alto livello del DBMS
 
 ```
@@ -118,10 +138,10 @@
 
 > [!definition] Record (definizione aggiunta, non presente nelle slide)
 > Un **record** è la rappresentazione **fisica** di una **tupla** su disco: la sequenza di byte che contiene i valori dei suoi **campi** (gli attributi).
-> - **Livello logico**: relazione → tuple → attributi.
-> - **Livello fisico**: file → blocchi → record → campi.
 >
 > Ogni tabella è memorizzata in uno o più **file**; ogni file è diviso in **blocchi** (l'unità letta e scritta dal disco); ogni blocco contiene uno o più **record**. Es. la tupla `(55, smith, 02)` di `Employee` diventa un record di 14 byte (2 + 10 + 2), con i campi `E#`, `E.name`, `Dept`.
+>
+> Per la corrispondenza completa tra concetti logici e fisici vedi [[#Dal livello logico al livello fisico]].
 
 L'organizzazione interna dei file è gestita **direttamente dal DBMS**: struttura dei singoli blocchi e distribuzione dei record nei blocchi.
 
@@ -136,6 +156,7 @@ Alternative:
 - formato **fisso** oppure **auto-descrittivo**;
 - lunghezza dei campi **fissa** oppure **variabile**.
 
+esempi: 1: tutto fisso 2: auto - variabile 
 **Formato fisso, lunghezza fissa** — lo schema è nel direttorio, il record contiene solo i dati.
 Es. `Employee`: `E#` (intero, 2 byte), `E.name` (10 char), `Dept` (codice, 2 byte):
 
