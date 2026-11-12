@@ -4,25 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5ac36a36b2a4d30f",
+        "id": "76128c46dffeca2c",
         "type": "tabs",
         "children": [
           {
-            "id": "c3073a99d5679923",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DB/TEORIA/Dispense_algebra_relazionale.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Dispense_algebra_relazionale"
-            }
-          },
-          {
-            "id": "06a122151edc72fa",
+            "id": "e18ba8705212427d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -34,9 +20,22 @@
               "icon": "lucide-file",
               "title": "04 - Architettura fisica dei DBMS"
             }
+          },
+          {
+            "id": "2080507afb215dd8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DB/TEORIA/Dispense_algebra_relazionale.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Dispense_algebra_relazionale"
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -98,7 +97,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "ffae741f6f0fbc68",
@@ -246,10 +245,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "06a122151edc72fa",
+  "active": "e18ba8705212427d",
   "lastOpenFiles": [
     "DB/TEORIA/Dispense_algebra_relazionale.md",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
+    "DB/TEORIA/Esercizi_algebra_relazionale.md",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md.tmp.227571.6c024421cd20",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md.tmp.227571.60f5bad042fd",
     "LIP/Lean/higher-order functions.md",
@@ -257,7 +257,6 @@
     "DB/TEORIA/PDF/04 - Architettura fisica dei DBMS.pdf",
     "DB/TEORIA/PDF/06 - Database per Big Data ed AI.pdf",
     "DB/TEORIA/06 - Database per Big Data ed AI.md",
-    "DB/TEORIA/Esercizi_algebra_relazionale.md",
     "DB/TEORIA/Esercizi_algebra_relazionale.md.tmp.39454.236bdb59fb40",
     "DB/TEORIA/03 - Algebra relazionale.md",
     "DB/TEORIA/Dispense_algebra_relazionale.md.tmp.39454.dbe97e256b69",

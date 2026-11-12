@@ -253,12 +253,12 @@ Non esiste un'organizzazione migliore in assoluto: è un compromesso fra **fless
 
 ## 2.2 Tipi di indice
 
-| Classificazione | Tipo | Descrizione |
-|---|---|---|
-| Rispetto all'ordinamento del file | **Primario** | Su un campo sul cui ordinamento è basata la memorizzazione |
-| | **Secondario** | Su una struttura non ordinata, oppure su una struttura ordinata ma su un campo che non ne determina l'ordinamento |
-| Rispetto al numero di voci | **Denso** | Contiene una entry per **ciascun valore** del campo chiave |
-| | **Sparso** | Contiene **meno** entry dei valori distinti della chiave (tipicamente una per blocco) |
+| Classificazione                   | Tipo           | Descrizione                                                                                                       |
+| --------------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Rispetto all'ordinamento del file | **Primario**   | Su un campo sul cui ordinamento è basata la memorizzazione                                                        |
+|                                   | **Secondario** | Su una struttura non ordinata, oppure su una struttura ordinata ma su un campo che non ne determina l'ordinamento |
+| Rispetto al numero di voci        | **Denso**      | Contiene una entry per **ciascun valore** del campo chiave                                                        |
+|                                   | **Sparso**     | Contiene **meno** entry dei valori distinti della chiave (tipicamente una per blocco)                             |
 
 ### Indice denso vs sparso (file ordinato, 2 record per blocco)
 
