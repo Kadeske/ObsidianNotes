@@ -309,13 +309,34 @@ Sparso 2° liv.   Denso 1° liv.       File disordinato
 
 ## 2.3 Cancellazione da indice sparso
 
-File ordinato con 2 record per blocco; indice sparso `10, 30, 50, 70, …` (BLOCK2 contiene 30 e 40).
+File ordinato con 2 record per blocco e indice sparso con una voce per blocco (la prima chiave del blocco).
 
-| Caso | Nel blocco | Nell'indice |
-|---|---|---|
-| **1** — elimino un record **non chiave** (es. 40) | Lo spazio si libera | **Nessuna modifica**: la chiave 30 è ancora valida |
-| **2** — elimino il record **chiave** (es. 30) | Il record viene eliminato | La chiave si aggiorna al **primo record superstite** (30 → 40) |
-| **3** — elimino **entrambi** (30 e 40) | Il blocco diventa vuoto e **riutilizzabile** | La voce viene **rimossa** (si passa da 10 direttamente a 50); i puntatori successivi si aggiornano |
+**Situazione iniziale**
+```
+Indice sparso         File su disco
+ 10 → BLOCK1   ───►   BLOCK1 [ 10 | 20 ]
+ 30 → BLOCK2   ───►   BLOCK2 [ 30 | 40 ]
+ 50 → BLOCK3   ───►   BLOCK3 [ 50 | 60 ]
+ 70 → BLOCK4   ───►   BLOCK4 [ 70 | 80 ]
+```
+
+Tutti i casi seguenti riguardano **BLOCK2**:
+
+| Caso                                              | Nel blocco                                   | Nell'indice                                                                                        |
+| ------------------------------------------------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **1** — elimino un record **non chiave** (es. 40) | Lo spazio si libera                          | **Nessuna modifica**: la chiave 30 è ancora valida                                                 |
+| **2** — elimino il record **chiave** (es. 30)     | Il record viene eliminato                    | La chiave si aggiorna al **primo record superstite** (30 → 40)                                     |
+| **3** — elimino **entrambi** (30 e 40)            | Il blocco diventa vuoto e **riutilizzabile** | La voce viene **rimossa** (si passa da 10 direttamente a 50); i puntatori successivi si aggiornano |
+|                                                   |                                              |                                                                                                    |
+
+**Dopo il caso 3**
+```
+Indice sparso         File su disco
+ 10 → BLOCK1   ───►   BLOCK1 [ 10 | 20 ]
+                      BLOCK2 [    |    ]   ← vuoto, riutilizzabile
+ 50 → BLOCK3   ───►   BLOCK3 [ 50 | 60 ]
+ 70 → BLOCK4   ───►   BLOCK4 [ 70 | 80 ]
+```
 
 ^ex-canc-sparso
 
@@ -327,11 +348,38 @@ File ordinato con 2 record per blocco; indice sparso `10, 30, 50, 70, …` (BLOC
 
 ## 2.4 Inserimento in indice sparso
 
-Es. inserimento del record **25** in un file ordinato `10, 20, 30, 40, 50, 60` con indice sparso `10, 30, 40, 60`:
-- 25 va **dopo 20**, ma il blocco può essere pieno.
-- Se non c'è spazio:
-  - si usa un **blocco di overflow** collegato;
-  - oppure si **divide** il blocco (split), eventualmente propagando la modifica all'indice.
+Esempio delle slide: blocchi da 2 posizioni, **non tutti pieni**, e indice sparso con la prima chiave di ogni blocco.
+
+**Situazione iniziale**
+```
+Indice sparso         File su disco
+ 10 → BLOCK1   ───►   BLOCK1 [ 10 | 20 ]   ← pieno
+ 30 → BLOCK2   ───►   BLOCK2 [ 30 |    ]
+ 40 → BLOCK3   ───►   BLOCK3 [ 40 | 50 ]   ← pieno
+ 60 → BLOCK4   ───►   BLOCK4 [ 60 |    ]
+```
+
+**Inserimento del record 25.** Per mantenere l'ordine, 25 va **dopo 20 e prima di 30**: tra BLOCK1, che è pieno, e BLOCK2.
+
+**Caso A — c'è spazio in BLOCK2** (come nella situazione iniziale): si inserisce 25 in testa a BLOCK2 spostando 30, e la voce dell'indice si aggiorna alla nuova prima chiave.
+```
+ 10 → BLOCK1   ───►   BLOCK1 [ 10 | 20 ]
+ 25 → BLOCK2   ───►   BLOCK2 [ 25 | 30 ]   ← la voce 30 diventa 25
+ 40 → BLOCK3   ───►   BLOCK3 [ 40 | 50 ]
+ 60 → BLOCK4   ───►   BLOCK4 [ 60 |    ]
+```
+
+**Caso B — non c'è spazio** (la domanda delle slide: "e se non ci fosse spazio dopo il 30?"). Due possibilità:
+- **blocco di overflow** (la soluzione mostrata nelle slide): si alloca un nuovo blocco collegato a BLOCK1 e si scrive lì il 25. L'indice **non cambia**: chi cerca 25 arriva a BLOCK1 e poi segue il collegamento.
+  ```
+   10 → BLOCK1   ───►   BLOCK1 [ 10 | 20 ] ──► OVERFLOW [ 25 |    ]
+   30 → BLOCK2   ───►   BLOCK2 [ 30 | 35 ]   ← ipotesi: BLOCK2 pieno
+   40 → BLOCK3   ───►   BLOCK3 [ 40 | 50 ]
+   60 → BLOCK4   ───►   BLOCK4 [ 60 |    ]
+  ```
+- **nuovo blocco nella sequenza** (split): si inserisce un blocco tra BLOCK1 e BLOCK2 e si aggiunge la voce `25` all'indice. Se anche il blocco dell'indice è pieno, va diviso a sua volta (le slide parlano di "splittare la radice dell'indice"): è il meccanismo che i B-tree rendono sistematico (vedi [[#2.6 Alberi di ricerca|2.6]]).
+
+(Il record 35 del caso B è aggiunto solo per rendere BLOCK2 pieno.)
 
 > [!question]- Svantaggi dei blocchi di overflow?
 > Le ricerche devono seguire le catene di overflow (più accessi a disco), l'ordinamento fisico si degrada e servono riorganizzazioni periodiche.

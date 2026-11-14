@@ -3,5 +3,6 @@
   "accentColor": "#84bd95",
   "interfaceFontFamily": "GohuFont 11 Nerd Font",
   "textFontFamily": "GohuFont 11 Nerd Font",
-  "theme": "system"
+  "theme": "system",
+  "showRibbon": true
 }
