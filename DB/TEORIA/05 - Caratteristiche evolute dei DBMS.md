@@ -111,8 +111,11 @@ L'effetto di transazioni **concorrenti** deve essere coerente (nel caso migliore
 Il livello più forte, **`SERIALIZABLE`**, garantisce un risultato equivalente a **una qualche esecuzione seriale**; non tutti i livelli di isolamento lo garantiscono.
 
 > [!example] Prenotazione del posto 07F su un volo
-> - **Senza isolamento**: Tim legge "07F libero" → Tom legge "07F libero" → Tim prenota 07F → Tom prenota 07F → **posto assegnato due volte**.
-> - **Con isolamento** (operazioni comunque in parallelo): Tim legge e prenota 07F → Tom legge "07F occupato" → Tom legge "07E libero" e prenota 07E → **07F a Tim, 07E a Tom**.
+> Tim e Tom eseguono ciascuno una transazione *«leggi lo stato del posto → se è libero, prenotalo»*, insieme ad altre operazioni (Tom acquista il bagaglio, Tim sceglie il pasto).
+> - **Senza isolamento**: le operazioni delle due transazioni si **intrecciano** liberamente: Tim legge "07F libero" → Tom legge "07F libero" → Tim prenota 07F → Tom prenota 07F → **posto assegnato due volte**. Entrambe le transazioni sono state eseguite **per intero**, quindi l'atomicità è rispettata: il problema è che ognuna ha deciso sulla base di un dato che l'altra stava per cambiare.
+> - **Con isolamento** (le transazioni procedono comunque in parallelo): il DBMS **non permette** che Tom legga lo stato di 07F mentre la transazione di Tim, che lo ha letto per prenotarlo, è ancora in corso. La lettura di Tom viene **ritardata** finché Tim non ha prenotato, quindi Tom vede "07F occupato" e ripiega su 07E → **07F a Tim, 07E a Tom**. Le operazioni che non riguardano 07F (bagaglio, pasto) continuano in parallelo.
+>
+> Il risultato è lo stesso che si otterrebbe eseguendo **prima tutta la transazione di Tim e poi tutta quella di Tom** (esecuzione seriale).
 
 ^ex-volo
 

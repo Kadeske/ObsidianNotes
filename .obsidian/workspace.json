@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
-                "mode": "source",
+                "file": "DB/TEORIA/Quiz_DB.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05 - Caratteristiche evolute dei DBMS"
+              "title": "Quiz_DB"
             }
           },
           {
@@ -245,8 +245,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "6b667f002aad471e",
+  "active": "e18ba8705212427d",
   "lastOpenFiles": [
+    "DB/TEORIA/06 - Database per Big Data ed AI.md",
+    "DB/TEORIA/sedn7ycBi",
+    "DB/TEORIA/Quiz_DB.md",
+    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
+    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md.tmp.346323.1e52e5fa091f",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
     "DB/TEORIA/img/DB04-hash-est-5.png",
     "DB/TEORIA/img/DB04-hash-est-4.png",
@@ -269,9 +274,6 @@
     "LIP/Lean/higher-order functions.md",
     "DB/TEORIA/PDF/03 - Algebra relazionale.pdf",
     "DB/TEORIA/PDF/04 - Architettura fisica dei DBMS.pdf",
-    "DB/TEORIA/PDF/06 - Database per Big Data ed AI.pdf",
-    "DB/TEORIA/06 - Database per Big Data ed AI.md",
-    "DB/TEORIA/Esercizi_algebra_relazionale.md.tmp.39454.236bdb59fb40",
     "DB/TEORIA/03 - Algebra relazionale.md",
     "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
     "DB/TEORIA/01 - Introduzione al corso.md",
@@ -287,10 +289,8 @@
     "IUM/TEORIA/06.5 - Architettura dell'informazione.md",
     "IUM/TEORIA/05 - Scenari e modelli dei task.md",
     "DB/LAB/Selezione.md",
-    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
     "DB/LAB/Alter tabelle.md",
     "LIP/Lean/Dimostrazioni/6.Have.md",
-    "LIP/Lean/definizione e teoremi usati.md",
-    "Istituzioni di Logica/Lezioni (claude)/Lezione 2 — Il calcolo HK-> dimostrazioni, derivazioni, teorema di deduzione.md"
+    "LIP/Lean/definizione e teoremi usati.md"
   ]
 }
