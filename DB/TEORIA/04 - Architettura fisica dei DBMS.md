@@ -413,74 +413,85 @@ Albero binario etichettato in cui, per ogni nodo, il sottoalbero **sinistro** co
 Tempo di ricerca e inserimento = **profondità** del nodo → **logaritmico** nel caso medio (inserimenti in ordine casuale).
 
 ### Albero di ricerca di ordine $P$
-1. Ogni nodo ha (fino a) $P$ figli e (fino a) $P-1$ etichette, **ordinate**.
-2. L'$i$-esimo sottoalbero contiene etichette **maggiori** della $(i-1)$-esima e **minori** della $i$-esima.
+Generalizza l'albero binario: un nodo contiene **più chiavi** e ha **più figli**.
+1. Ogni nodo ha (fino a) $P$ figli e (fino a) $P-1$ chiavi, **ordinate**.
+2. L'$i$-esimo sottoalbero contiene chiavi **maggiori** della $(i-1)$-esima e **minori** della $i$-esima.
 3. Ogni ricerca o modifica visita un **cammino radice → foglia**.
-4. Nelle strutture fisiche **un nodo corrisponde a un blocco**.
+4. Nelle strutture fisiche **un nodo corrisponde a un blocco**: più chiavi per nodo significa albero più basso e meno accessi al disco.
 
-La struttura è comunque (potenzialmente) rigida. Un **B-tree** è un albero di ricerca mantenuto **bilanciato** grazie a:
-1. **riempimento parziale** (mediamente ~70%);
-2. **riorganizzazioni locali** in caso di sbilanciamento.
+**Esempio: albero di ricerca di ordine 3** (fino a 3 figli e 2 chiavi per nodo)
+
+![[DB04-albero-ordine-3.png|520]]
+
+*Ricerca di 27*: nella radice `[30 | 60]`, 27 < 30 → primo figlio `[10 | 20]`; 27 > 20 → terzo figlio `[24 | 27]` → trovato. Si leggono **3 nodi**, cioè 3 blocchi.
+
+L'albero però **non è bilanciato**: per arrivare a 93 o 96 servono 4 livelli, per 40 ne bastano 2. Con inserimenti sfortunati un ramo può allungarsi senza limite: la struttura è (potenzialmente) **rigida**.
+
+Un **B-tree** è un albero di ricerca mantenuto **bilanciato** (tutte le foglie alla stessa profondità) grazie a:
+1. **riempimento parziale** dei nodi (mediamente ~70%), che lascia spazio per gli inserimenti;
+2. **riorganizzazioni locali** (split e merge) quando un nodo si riempie o si svuota troppo.
 
 ### Organizzazione dei nodi del B-tree
 
-```
- ┌────┬────┬────┬─────┬────┬─────┬────┬──────┐
- │ P0 │ K1 │ P1 │  …  │ Ki │ Pi  │ …  │ KF │ PF+1 │
- └────┴────┴────┴─────┴────┴─────┴────┴──────┘
-   │         │               │              │
- K < K1   K1 ≤ K < K2    Ki ≤ K < Ki+1    K ≥ KF
-```
-Le $K_i$ sono **chiavi** ordinate, i $P_i$ **puntatori** ai sottoalberi.
+![[DB04-nodo-btree.png|620]]
+
+Un nodo alterna **puntatori** ($P_i$) e **chiavi** ordinate ($K_i$):
+
+| Puntatore | Porta al sottoalbero con le chiavi |
+|---|---|
+| $P_0$ (prima di $K_1$) | $K < K_1$ |
+| $P_i$ (tra $K_i$ e $K_{i+1}$) | $K_i \le K < K_{i+1}$ |
+| $P_{F+1}$ (dopo l'ultima chiave $K_F$) | $K \ge K_F$ |
+
+**Ricerca della chiave $K$ in un nodo**: si scorrono le chiavi finché non si trova la prima $K_i$ **maggiore** di $K$ e si segue il puntatore alla sua sinistra; se $K$ è maggiore o uguale a tutte, si segue l'ultimo puntatore. Si ripete fino alla foglia.
 
 ### Split e merge
 1. Inserimenti ed eliminazioni sono preceduti da una **ricerca fino a una foglia**.
 2. Se c'è posto nella foglia, si inserisce lì.
-3. Altrimenti il nodo viene **suddiviso (split)**: la chiave mediana sale al genitore, che riceve un puntatore in più.
-4. Se non c'è posto nemmeno nel genitore, si risale ulteriormente (al limite si crea una nuova radice).
-5. Simmetricamente, eliminazioni che svuotano troppo un nodo causano una **fusione (merge)**.
+3. Altrimenti il nodo viene **suddiviso (split)** in due: la chiave mediana sale al genitore, che riceve un puntatore in più.
+4. Se non c'è posto nemmeno nel genitore, si risale ulteriormente; se si divide la radice, se ne crea una nuova e l'albero **cresce di un livello** (dall'alto, per questo resta bilanciato).
+5. Simmetricamente, un'eliminazione che svuota troppo un nodo causa una **fusione (merge)** con un fratello.
 
 > Il riempimento dei nodi rimane **sempre superiore al 50%**.
 
-**Esempio di split**: foglia piena `[10 20 30]` (3/3 chiavi) → inserisco 25 → overflow `[10 20 25 30]` → split: **25 sale al genitore** come nuovo separatore, figli `[10 20]` e `[30]`. ^ex-split
+**Esempio di split** — una foglia da 3 chiavi `[10 | 20 | 30]` è piena; inserendo 25 si ottiene l'overflow `[10 | 20 | 25 | 30]`, quindi la foglia si divide in `[10 | 20]` e `[30]` e la chiave mediana **25 sale al genitore** come nuovo separatore. ^ex-split
 
-```
-Iniziale:       [k1 k6]
-            /      |      \
-       [k1 k2] [k4 k5]   …
+![[DB04-split-esempio.png|620]]
 
-a) insert k3 → split          b) delete k2 → merge
-   [k1 k3 k6]                     [k1 k6]
-  [k1 k2] [k3 k4 k5] …          [k1 k3 k4 k5] …
-```
+**Split e merge sullo stesso albero** (nodi da 4 chiavi):
+
+![[DB04-split-merge.png|560]]
+
+| Passo | Cosa succede |
+|---|---|
+| **Situazione iniziale** | Radice `[k1 k6]`; la foglia `[k1 k2 k4 k5]` è **piena** (4/4) |
+| **a. insert k3 → split** | k3 andrebbe tra k2 e k4, ma non c'è posto: la foglia si divide in `[k1 k2]` e `[k3 k4 k5]` e k3 sale alla radice, che diventa `[k1 k3 k6]` |
+| **b. delete k2 → merge** | Partendo dal risultato di a: togliendo k2 la foglia `[k1]` scende sotto il 50%, quindi si **fonde** con la sorella in `[k1 k3 k4 k5]` e il separatore k3 sparisce dalla radice, che torna `[k1 k6]` |
 
 Video di esempio: <https://www.youtube.com/watch?v=coRJrcIYbF4>
 
 ### B-tree vs B+ tree
 
-| **B-tree** | **B+ tree** |
-|---|---|
-| Anche i **nodi intermedi** possono avere puntatori **direttamente ai dati** | Solo le **foglie** puntano ai dati; le foglie sono **collegate in una lista** |
-| Ricerche puntuali talvolta più corte | **Ottimi per le ricerche su intervalli**; molto usati nei DBMS |
+| | **B-tree** | **B+ tree** |
+|---|---|---|
+| Dove stanno i puntatori ai dati | In **tutti i nodi**, anche quelli intermedi | **Solo nelle foglie** |
+| Chiavi | Ogni chiave compare **una sola volta** | Le chiavi dei nodi intermedi sono **copie** che fanno solo da separatori: ogni chiave compare comunque in una foglia |
+| Foglie | Indipendenti | **Collegate in una lista** ordinata |
+| Ricerca puntuale | A volte si ferma prima, in un nodo intermedio | Arriva sempre fino a una foglia |
+| Ricerca per intervallo | Bisogna risalire e riscendere nell'albero | Si trova il primo valore e si **scorrono le foglie** |
+| Uso | — | **Lo standard nei DBMS** |
 
-**B-tree**
-```
-                 [ k1 | k6 | k10 ]  → t(k1) t(k6) t(k10)
-               /        |         \
- [k2 k3 k4 k5]          …          [k7 k8 k9]
- t(k2)…t(k5)                       t(k7)…t(k9)
-```
+**B-tree** — le chiavi k1, k6, k10 della radice puntano **direttamente** ai dati (t(k1), t(k6), t(k10)), come le chiavi delle foglie:
 
-**B+ tree**
-```
-                       [ paolo ]                       ← radice
-                 /                   \
-           [ mauro ]               [ renzo ]           ← 1° livello
-          /         \             /         \
- [bice dino] ⇄ [mauro] ⇄ [paolo] ⇄ [renzo teresa]      ← foglie collegate
-       ↓          ↓         ↓            ↓
-             puntatori ai dati (organizzati in modo arbitrario)
-```
+![[DB04-btree.png|620]]
+
+**B+ tree** — i nodi intermedi (*paolo*, *mauro*, *renzo*) servono solo per orientarsi; tutte le chiavi sono nelle foglie, che sono collegate tra loro e puntano ai dati:
+
+![[DB04-bplustree.png|620]]
+
+*Ricerca di "renzo"*: radice `[paolo]`, renzo ≥ paolo → figlio destro `[renzo]`; renzo ≥ renzo → foglia `[renzo | teresa]` → trovato.
+
+*Ricerca dei nomi tra "dino" e "paolo"*: si scende una sola volta fino alla foglia che contiene *dino*, poi si seguono i collegamenti tra le foglie: dino → mauro → paolo. In un B-tree con le stesse chiavi, alcune (ad esempio *paolo* nella radice) starebbero solo nei nodi intermedi: per leggerle in ordine bisognerebbe risalire e riscendere nell'albero.
 
 ### Efficienza dei B-tree
 - Molto efficienti quando il numero di chiavi **per blocco è grande** (fan-out elevato).
@@ -494,61 +505,119 @@ Video di esempio: <https://www.youtube.com/watch?v=coRJrcIYbF4>
 
 ## 3.1 Strutture ad accesso calcolato (hashing)
 
-**Obiettivo**: accesso diretto a un insieme di record in base al valore di un campo (detto impropriamente "chiave", non necessariamente identificante).
+**Obiettivo**: accedere **direttamente** ai record con un certo valore di un campo, senza scorrere un indice livello per livello. Il campo è detto impropriamente "chiave", anche se non è necessariamente identificante.
 
-La **funzione hash** associa a ogni valore della chiave un **indirizzo**, in uno spazio di dimensione leggermente superiore al necessario.
+**Idea**: invece di *cercare* dove sta un record, lo si **calcola**. Una **funzione hash** $h$ trasforma il valore della chiave in un **indirizzo** (il numero di un blocco), e il record viene scritto e cercato proprio lì. Lo spazio degli indirizzi è di dimensione **leggermente superiore** al necessario, per lasciare posti liberi.
 
-```
- key ──► h(key) = 1 ──►  Indice hash          Dati
-                        [0] → P102  ──►  B102
-                        [1] → P203  ──►  B203 (record key)
-                        [2] → P451  ──►  …
-                        [3] → P204  ──►  B204
-```
+| | B+ tree | Hashing |
+|---|---|---|
+| Come si trova il record | Si scende dalla radice a una foglia | Si calcola $h(k)$ |
+| Accessi per una ricerca | Profondità + 1 (tipicamente 4–5) | **≈ 1** |
+
+### Tabella hash
+
+![[DB04-tabella-hash.png|560]]
+
+1. Si calcola $h(\text{key})$: nell'esempio $h(\text{key}) = 1$.
+2. Nell'**indice hash** (il blocco B1, con le posizioni 0–3) la posizione 1 contiene il puntatore $P_{203}$.
+3. Il puntatore porta al blocco di dati **B203**, che contiene il record cercato.
+
+Se l'indice hash è piccolo e sta in memoria centrale, la ricerca costa **un solo accesso al disco**. Si può anche fare a meno dell'indice e usare $h(k)$ direttamente come numero di blocco del file (*file hash*).
+
+### La funzione hash
 
 $$h : C \to I \qquad |I| \ll |C|$$
-- $C$ = insieme delle possibili chiavi; $I$ = insieme degli indirizzi.
-- Una **buona** funzione hash distribuisce le chiavi in $I$ in modo **uniforme**.
+
+- $C$ = insieme dei **possibili valori** della chiave (es. tutte le matricole a 6 cifre: un milione);
+- $I$ = insieme degli **indirizzi** disponibili (es. 50 posizioni).
+
+Una **buona** funzione hash distribuisce i valori della chiave sugli indirizzi in modo **uniforme**, così che ogni indirizzo riceva più o meno lo stesso numero di record. La funzione usata negli esempi delle slide è il **resto della divisione**: $h(k) = k \bmod n$, dove $n$ è il numero di indirizzi.
 
 ### Collisioni
-Poiché $|C| \gg |I|$, $h$ **non può essere iniettiva**: esistono **collisioni**, cioè chiavi diverse con lo stesso indirizzo.
 
-**Esempio**: $h(k) = k \bmod 50$, 40 record, tabella con 50 posizioni → 1 posizione con 4 chiavi (pos. 10: 205610, 201260, 102360, 205460), 2 posizioni con 3 chiavi, 5 posizioni con 2 chiavi. ^ex-collisioni
+Poiché i possibili valori sono molti più degli indirizzi ($|C| \gg |I|$), $h$ **non può essere iniettiva**: esistono **collisioni**, cioè chiavi diverse che finiscono nello **stesso indirizzo**.
 
-| Ridurre la probabilità di collisione | Gestire le collisioni |
+**Esempio** (slide): 40 record in una tabella di **50 posizioni**, con $h(k) = k \bmod 50$ (cioè le ultime due cifre della chiave, modulo 50). ^ex-collisioni
+
+| Situazione | Posizioni | Chiavi |
+|---|---|---|
+| **4 chiavi** nella stessa posizione | 1 (pos. 10) | 205610, 201260, 102360, 205460 |
+| **3 chiavi** nella stessa posizione | 2 (pos. 2 e 5) | pos. 2: 205802, 200902, 116202 · pos. 5: 66005, 116455, 200205 |
+| **2 chiavi** nella stessa posizione | 5 (es. pos. 1 e 46) | pos. 1: 66301, 205751 · pos. 46: 200296, 205796 · … |
+
+Anche se le posizioni sono più dei record (50 contro 40), le collisioni sono **inevitabili**: già con pochi record è molto probabile che due finiscano nello stesso posto.
+
+| Ridurre la probabilità di collisione | Gestire le collisioni che avvengono comunque |
 |---|---|
-| Usare una **buona** funzione hash (distribuzione casuale e uniforme) | Usare **posizioni successive** disponibili |
-| Aumentare lo **spazio ridondante** | Usare una **tabella di overflow** |
+| Usare una **buona** funzione hash (distribuzione casuale e uniforme) | **Posizioni successive**: se la posizione è occupata, si usa la prima libera dopo di essa (es. la chiave destinata alla 10 finisce nella 11) |
+| Aumentare lo **spazio ridondante** (più posizioni rispetto ai record) | **Tabella di overflow**: i record in eccesso vanno in un'area separata, collegata alla posizione originale |
 
-**File hash con fattore di blocco**: con gli stessi 40 record e $h(k) = k \bmod 5$ su **5 blocchi da 10 posizioni** (50 posizioni totali), si hanno **solo due overflow**: raggruppare le posizioni in blocchi assorbe le collisioni.
+In entrambi i casi chi cerca una chiave in collisione deve fare **accessi in più**: per questo il costo medio è "di poco superiore" a 1.
 
-### Crescita dei dati
-- Overflow e **riorganizzazioni periodiche**;
-- **Hashing dinamico**.
+### File hash con fattore di blocco
+
+Nella pratica ogni indirizzo non è una singola posizione ma un **blocco** che contiene più record (il **fattore di blocco**). Stessi 40 record, stesse 50 posizioni totali, ma organizzate in **5 blocchi da 10 posizioni**, con $h(k) = k \bmod 5$:
+
+![[DB04-file-hash-blocchi.png|620]]
+
+Ogni colonna è un blocco. Solo due blocchi ricevono **11** record invece di 10, quindi ci sono **solo due overflow** (205845 e 206092, in rosso), contro le molte collisioni dell'esempio precedente.
+
+> [!tip] Perché funziona
+> Una posizione singola "trabocca" appena riceve 2 record; un blocco da 10 trabocca solo se ne riceve più di 10. Le fluttuazioni della distribuzione si **compensano** su gruppi grandi: più alto è il fattore di blocco, più rari sono gli overflow (a parità di spazio totale).
+
+### Come gestire la crescita dei dati
+
+Se il numero di record cresce molto, gli overflow si moltiplicano e le prestazioni peggiorano. Due soluzioni:
+- **overflow e riorganizzazioni periodiche**: di tanto in tanto si ricostruisce il file con più blocchi e una nuova funzione hash (operazione costosa);
+- **hashing dinamico**: la struttura cresce **gradualmente**, un blocco alla volta.
 
 ### Hashing dinamico (estendibile)
-Invece di usare tutti i $b$ bit dell'output di $h$, se ne usano solo i **primi $i$**, e $i$ **cresce nel tempo**. Un **direttorio** di $2^i$ voci punta ai blocchi; ogni blocco ha una **profondità locale** $j \le i$ (quanti bit lo distinguono).
 
-**Esempio**: $h(k)$ restituisce 4 bit, 2 chiavi per blocco.
+La funzione hash produce $b$ bit, ma se ne usano solo i **primi $i$**, e $i$ **cresce nel tempo**.
 
-| Passo | Direttorio | Blocchi (profondità locale) |
-|---|---|---|
-| Iniziale, $i=1$ | `0`, `1` | `0`→{0001} (1) · `1`→{1001, 1100} (1) |
-| Insert **1010** → blocco `1` pieno, $j = i$ → **raddoppio** del direttorio, $i=2$ | `00`,`01`,`10`,`11` | `00`,`01`→{0001} (1) · `10`→{1001, 1010} (2) · `11`→{1100} (2) |
-| Insert **0111** → c'è posto | | `00`,`01`→{0001, 0111} (1) |
-| Insert **0000** → blocco pieno ma $j=1 < i=2$ → **split senza raddoppio** | | `00`→{0000, 0001} (2) · `01`→{0111} (2) |
-| Insert **1001** → blocco `10` pieno, $j = i$ → **raddoppio**, $i=3$ | `000`…`111` | `100`→{1001, 1001} (3) · `101`→{1010} (3); gli altri blocchi restano condivisi da più voci |
+- Un **direttorio** ha $2^i$ voci, una per ogni combinazione dei primi $i$ bit; ogni voce punta a un blocco. $i$ è la **profondità globale**.
+- Ogni blocco ha una **profondità locale** $j \le i$: quanti bit iniziali hanno in comune tutte le sue chiavi. Se $j < i$, il blocco è puntato da **più voci** del direttorio (che differiscono solo negli ultimi bit).
+- **Ricerca**: si leggono i primi $i$ bit di $h(k)$, si va alla voce corrispondente del direttorio e si legge il blocco (≈ 1 accesso, se il direttorio sta in memoria).
 
-^ex-hash-est
+**Inserimento in un blocco pieno:**
+
+| Caso | Cosa si fa |
+|---|---|
+| $j < i$ | **Split del blocco senza toccare il direttorio**: il blocco si divide in due in base al bit $j+1$, entrambi passano a profondità $j+1$, e le voci che puntavano al vecchio blocco vengono ripartite tra i due |
+| $j = i$ | **Raddoppio del direttorio**: $i$ aumenta di 1, ogni voce viene sdoppiata (le due copie puntano allo stesso blocco), poi si procede con lo split come sopra |
+
+**Esempio** (slide): $h(k)$ restituisce 4 bit, ogni blocco contiene 2 chiavi. Accanto a ogni blocco c'è la sua profondità locale. ^ex-hash-est
+
+**1. Situazione iniziale**, $i = 1$: le chiavi che iniziano con `0` vanno nel primo blocco, quelle con `1` nel secondo.
+
+![[DB04-hash-est-1.png|320]]
+
+**2. Insert 1010** → va nel blocco `1`, che è pieno (1001, 1100) e ha $j = 1 = i$: **raddoppio del direttorio** ($i = 2$, voci `00 01 10 11`) e split del blocco in base al secondo bit: `10` → {1001, 1010}, `11` → {1100}, entrambi con profondità 2. Il blocco {0001} non cambia e resta puntato sia da `00` sia da `01` (profondità locale 1).
+
+![[DB04-hash-est-2.png|280]]
+
+**3. Insert 0111** → va nel blocco puntato da `01`, cioè {0001}, che ha posto: diventa {0001, 0111}.
+
+![[DB04-hash-est-3.png|380]]
+
+**4. Insert 0000** → va nello stesso blocco, che ora è pieno, ma $j = 1 < i = 2$: **split senza raddoppio**. Le chiavi si ripartiscono in base al secondo bit: `00` → {0000, 0001}, `01` → {0111}, entrambi con profondità 2.
+
+**5. Insert 1001** (un secondo 1001) → va nel blocco `10` = {1001, 1010}, pieno, con $j = 2 = i$: **nuovo raddoppio** ($i = 3$) e split in base al terzo bit: `100` → {1001, 1001}, `101` → {1010}, entrambi con profondità 3.
+
+![[DB04-hash-est-4.png|380]]
+
+![[DB04-hash-est-5.png|300]]
+
+Nella situazione finale il direttorio ha 8 voci ma solo 5 blocchi: i blocchi con profondità 2 sono puntati da due voci ciascuno (`000` e `001`, `010` e `011`, `110` e `111`).
 
 > [!note] Chiave duplicata
-> Nessun numero di bit può separare la chiave **1001** da sé stessa: con troppi duplicati l'hashing estendibile richiede comunque blocchi di overflow.
+> Le due copie di **1001** finiscono necessariamente nello stesso blocco: nessun bit le può separare, perché hanno lo stesso valore di $h$. Qui ci stanno (il blocco ha 2 posti), ma un **terzo** 1001 non potrebbe essere sistemato con nessun numero di raddoppi: con troppi duplicati l'hashing estendibile richiede comunque blocchi di overflow.
 
 ### Osservazioni sui file hash
-- ✅ Organizzazione **più efficiente** per l'accesso diretto con condizioni di **uguaglianza**.
-- ≈ Costo medio **di poco superiore all'unità** (≈ 1 accesso).
-- ❌ **Non efficiente** per ricerche su **intervalli**.
-- ⚠️ Il caso peggiore è molto costoso, ma improbabile.
+- ✅ Organizzazione **più efficiente** per l'accesso diretto con condizioni di **uguaglianza** (`WHERE Matricola = 104`).
+- ≈ Costo medio **di poco superiore all'unità** (≈ 1 accesso), a causa delle collisioni.
+- ❌ **Non efficiente** per ricerche su **intervalli** (`WHERE Voto BETWEEN 27 AND 30`): valori vicini finiscono in blocchi lontani, quindi bisogna leggere tutto il file.
+- ⚠️ Il caso peggiore (tutte le chiavi nello stesso indirizzo) è molto costoso, ma improbabile con una buona funzione hash.
 
 ## 3.2 Indice bitmap
 
