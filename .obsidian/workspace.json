@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DB/TEORIA/Esami_passati_DB.md",
+                "file": "DB/TEORIA/Esercizi_algebra_esami_passati.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Esami_passati_DB"
+              "title": "Esercizi_algebra_esami_passati"
             }
           },
           {
@@ -215,9 +215,14 @@
                     {
                       "tabId": "tab-1793801149235-ajr95ay",
                       "conversationId": "conv-1793977243874-z2mbkjbt5"
+                    },
+                    {
+                      "tabId": "tab-1794847003062-3uz94tz",
+                      "conversationId": "conv-1793977243874-z2mbkjbt5",
+                      "preview": true
                     }
                   ],
-                  "activeTabId": "tab-1793801149235-ajr95ay"
+                  "activeTabId": "tab-1794847003062-3uz94tz"
                 }
               },
               "icon": "bot",
@@ -229,7 +234,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 543.12890625
+    "width": 817.84765625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -247,21 +252,24 @@
   },
   "active": "e18ba8705212427d",
   "lastOpenFiles": [
-    "DB/TEORIA/06 - Database per Big Data ed AI.md",
-    "DB/TEORIA/Esami_passati_DB.md",
-    "DB/TEORIA/quiz_json/DB_teoria_esami_passati.json",
     "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
+    "DB/TEORIA/Esercizi_algebra_esami_passati.md",
+    "DB/TEORIA/Esercizi_algebra_esami_passati.md.tmp.46683.41dc73fea400",
+    "DB/TEORIA/06 - Database per Big Data ed AI.md",
+    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
+    "DB/TEORIA/Esami_passati_DB.md",
+    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
+    "DB/TEORIA/Schema concettuale, logico ed esterno.md",
+    "DB/TEORIA/Schema concettuale, logico ed esterno.md.tmp.8933.6b7e771f1e09",
+    "DB/TEORIA/quiz_json/DB_teoria_esami_passati.json",
     "DB/TEORIA/03 - Algebra relazionale.md",
     "DB/TEORIA/quiz_json/DB_teoria_quiz.json",
     "DB/TEORIA/quiz_json",
-    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
     "DB/TEORIA/Esami_passati_DB.md.tmp.8933.80b8825ef705",
     "DB/TEORIA/vecchi_esami/primo_parziale_8_11_2022 (1).pdf",
     "DB/TEORIA/vecchi_esami/Parziale_1_BD_-_08.11.2022 (2).pdf",
     "DB/TEORIA/vecchi_esami/Esame_Totale_BD_22_06_23 (1).pdf",
     "DB/TEORIA/vecchi_esami/BD1-Esercizi-21gen2021-1.pdf",
-    "DB/TEORIA/vecchi_esami/TemiBD1Teoria.txt",
-    "DB/TEORIA/vecchi_esami/CoseEsami/TemiBD1Teoria.txt",
     "DB/TEORIA/Quiz_DB.md",
     "DB/TEORIA/img/DB04-hash-est-5.png",
     "DB/TEORIA/img/DB04-hash-est-4.png",
@@ -276,7 +284,6 @@
     "DB/TEORIA/Dispense_algebra_relazionale.md",
     "DB/TEORIA/Esercizi_algebra_relazionale.md",
     "LIP/Lean/higher-order functions.md",
-    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
     "DB/TEORIA/01 - Introduzione al corso.md",
     "IUM/TEORIA/03 - Interaction Design.md",
     "IUM/TEORIA/00 - Introduzione al corso.md",
@@ -290,7 +297,6 @@
     "IUM/TEORIA/06.5 - Architettura dell'informazione.md",
     "IUM/TEORIA/05 - Scenari e modelli dei task.md",
     "DB/LAB/Selezione.md",
-    "DB/LAB/Alter tabelle.md",
-    "LIP/Lean/Dimostrazioni/6.Have.md"
+    "DB/LAB/Alter tabelle.md"
   ]
 }
