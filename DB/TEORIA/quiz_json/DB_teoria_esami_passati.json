@@ -1,0 +1,557 @@
+[
+  {
+    "domanda": "Possono esistere attributi di una tabella che non appartengono a nessuna superchiave?",
+    "opzioni": [
+      "Sì: gli attributi che non fanno parte di alcuna chiave della relazione",
+      "Sì: gli attributi che possono assumere il valore NULL in qualche tupla",
+      "No: l'insieme di tutti gli attributi è sempre una superchiave",
+      "Dipende dall'istanza: succede se la relazione ha tuple quasi uguali"
+    ],
+    "soluzioni": [
+      "No: l'insieme di tutti gli attributi è sempre una superchiave"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Una superchiave non minimale può essere sottoinsieme di una chiave primaria?",
+    "opzioni": [
+      "Sì, se la superchiave ha meno attributi della chiave primaria",
+      "No, perché la chiave primaria non sarebbe più minimale",
+      "Sì, sempre: ogni superchiave è contenuta in una chiave primaria",
+      "Solo se la chiave primaria è una chiave artificiale (surrogata)"
+    ],
+    "soluzioni": [
+      "No, perché la chiave primaria non sarebbe più minimale"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale descrizione dei tre livelli dell'architettura di un DBMS è corretta?",
+    "opzioni": [
+      "Esterno: strutture di memorizzazione su disco · Logico: le viste dei singoli utenti · Fisico: l'intera base di dati",
+      "Esterno: viste per utenti e applicazioni · Logico: l'intera base di dati · Fisico: strutture di memorizzazione",
+      "Esterno: l'interfaccia grafica del DBMS · Logico: lo schema ER del progetto · Fisico: l'hardware del server che ospita i dati",
+      "Esterno: l'intera base di dati · Logico: le strutture di memorizzazione · Fisico: le viste degli utenti sui file"
+    ],
+    "soluzioni": [
+      "Esterno: viste per utenti e applicazioni · Logico: l'intera base di dati · Fisico: strutture di memorizzazione"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quante chiavi diverse può avere al massimo una relazione R(A, B)?",
+    "opzioni": [
+      "Esattamente una",
+      "Al massimo 2",
+      "3: {A}, {B} e {A, B}",
+      "4"
+    ],
+    "soluzioni": [
+      "Al massimo 2"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale affermazione descrive correttamente vantaggi e svantaggi di un DBMS che supporta le proprietà ACID?",
+    "opzioni": [
+      "Transazioni affidabili con concorrenza e guasti, al prezzo di una minore efficienza",
+      "Maggiore velocità rispetto ai DBMS senza ACID, al prezzo di una minore affidabilità",
+      "Vincoli di integrità superflui, perché le transazioni garantiscono già la correttezza",
+      "Nessuno svantaggio: anche tutti i NoSQL garantiscono ACID completo senza alcun costo"
+    ],
+    "soluzioni": [
+      "Transazioni affidabili con concorrenza e guasti, al prezzo di una minore efficienza"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Perché ogni relazione in BCNF è anche in 3NF?",
+    "opzioni": [
+      "Perché la 3NF impone condizioni più restrittive della BCNF su ogni dipendenza",
+      "Perché la condizione della BCNF è uno dei due casi ammessi dalla 3NF",
+      "Non è vero: esistono relazioni in BCNF che non soddisfano la 3NF",
+      "Perché entrambe vietano qualsiasi dipendenza funzionale non banale"
+    ],
+    "soluzioni": [
+      "Perché la condizione della BCNF è uno dei due casi ammessi dalla 3NF"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale affermazione sui formati dei record è corretta?",
+    "opzioni": [
+      "Fisso: schema nel direttorio e solo dati nel record; auto-descrittivo: anche i metadati nel record",
+      "Fisso: metadati in ogni record; auto-descrittivo: schema nel direttorio, solo dati nei record",
+      "Fisso e auto-descrittivo differiscono solo per l'ordine in cui i campi sono scritti nel record",
+      "Auto-descrittivo occupa meno spazio, perché non ripete in ogni record le informazioni sullo schema"
+    ],
+    "soluzioni": [
+      "Fisso: schema nel direttorio e solo dati nel record; auto-descrittivo: anche i metadati nel record"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Nell'ambito del modello relazionale, data una relazione, esiste sempre una superchiave?",
+    "opzioni": [
+      "In generale no",
+      "Esiste una superchiave solo se non esistono chiavi",
+      "Sì, sempre",
+      "Sì, purché almeno un attributo ammetta valori nulli"
+    ],
+    "soluzioni": [
+      "Sì, sempre"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale di queste sequenze di attività descrive meglio la realizzazione di un database?",
+    "opzioni": [
+      "Si definisce prima lo schema logico, poi quello concettuale, poi quello esterno",
+      "Si definisce prima lo schema concettuale, poi quello logico, poi quello esterno",
+      "Si definisce prima lo schema logico, poi quello esterno, poi quello concettuale",
+      "Si definisce prima lo schema esterno, poi quello logico, poi quello concettuale"
+    ],
+    "soluzioni": [
+      "Si definisce prima lo schema concettuale, poi quello logico, poi quello esterno"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "A cosa serve un Data Definition Language (DDL)?",
+    "opzioni": [
+      "Per l'interrogazione e l'aggiornamento di istanze nella base di dati",
+      "Per la definizione e la modifica di schemi (logici, esterni, fisici)",
+      "Per la definizione ma non per la modifica di schemi (logici, esterni, fisici)",
+      "Per l'interrogazione ma non per l'aggiornamento di istanze nella base di dati"
+    ],
+    "soluzioni": [
+      "Per la definizione e la modifica di schemi (logici, esterni, fisici)"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Nel livello fisico del DBMS, qual è il vantaggio dell'organizzazione disordinata dei record su disco rispetto a quella ordinata?",
+    "opzioni": [
+      "L'organizzazione disordinata è più efficiente per ricerche su range di valori",
+      "L'organizzazione disordinata è più efficiente in caso di ricerche sul valore della chiave",
+      "L'organizzazione disordinata non presenta vantaggi rispetto a quella ordinata",
+      "L'organizzazione disordinata è più efficiente in caso di inserimenti, modifiche e cancellazioni"
+    ],
+    "soluzioni": [
+      "L'organizzazione disordinata è più efficiente in caso di inserimenti, modifiche e cancellazioni"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale coppia di definizioni di indipendenza fisica e logica dei dati è corretta?",
+    "opzioni": [
+      "Fisica: l'esterno non dipende dal logico · Logica: logico ed esterno non dipendono dal fisico",
+      "Fisica: i programmi non dipendono dall'hardware · Logica: i programmi non dipendono da SQL",
+      "Fisica: logico ed esterno non dipendono dal fisico · Logica: l'esterno non dipende dal logico",
+      "Fisica: le viste non dipendono dalle tabelle · Logica: le tabelle non dipendono dagli indici"
+    ],
+    "soluzioni": [
+      "Fisica: logico ed esterno non dipendono dal fisico · Logica: l'esterno non dipende dal logico"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale affermazione descrive correttamente analogie e differenze tra la relazione matematica e la relazione del modello relazionale?",
+    "opzioni": [
+      "Entrambe sono insiemi di tuple; la matematica è posizionale, l'altra usa nomi di attributo",
+      "La matematica ammette tuple duplicate, mentre quella del modello relazionale non le ammette",
+      "Nel modello relazionale conta l'ordine delle colonne, nella relazione matematica invece no",
+      "Nessuna differenza: sono due nomi diversi per lo stesso concetto, con le stesse proprietà"
+    ],
+    "soluzioni": [
+      "Entrambe sono insiemi di tuple; la matematica è posizionale, l'altra usa nomi di attributo"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che cosa rappresenta il valore NULL?",
+    "opzioni": [
+      "Il valore 0 per i numeri e la stringa vuota per i testi",
+      "L'assenza di un valore: inesistente oppure sconosciuto",
+      "Un valore speciale del dominio, uguale a ogni altro NULL",
+      "Un errore nei dati, che il DBMS segnala all'utente"
+    ],
+    "soluzioni": [
+      "L'assenza di un valore: inesistente oppure sconosciuto"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che cosa succede alle righe con Stipendio = NULL in una query con WHERE Stipendio > 50000?",
+    "opzioni": [
+      "Vengono restituite, perché NULL soddisfa ogni condizione",
+      "La query si interrompe con un errore di tipo sul confronto",
+      "Vengono trattate come se il loro stipendio valesse zero",
+      "Non vengono restituite: il confronto con NULL non è vero"
+    ],
+    "soluzioni": [
+      "Non vengono restituite: il confronto con NULL non è vero"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Considerare la relazione R(A, B, C). Da quali tuple è composta la relazione SEL[A>B](R)?",
+    "opzioni": [
+      "Le tuple di R in cui il valore di A è maggiore di quello di B, più quelle per cui A è NULL ma B è diverso da NULL",
+      "Le tuple di R in cui il valore di A è maggiore di quello di B, più quelle per cui B è NULL ma A è diverso da NULL",
+      "Le tuple di R in cui il valore di A è maggiore di quello di B, più quelle per cui A è NULL oppure B è NULL (o entrambi sono NULL)",
+      "Le tuple di R in cui il valore di A e di B è diverso da NULL e il valore di A è maggiore di quello di B"
+    ],
+    "soluzioni": [
+      "Le tuple di R in cui il valore di A e di B è diverso da NULL e il valore di A è maggiore di quello di B"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Come funziona un indice hash e qual è il suo vantaggio rispetto a un B-tree?",
+    "opzioni": [
+      "Ordina le chiavi in un albero bilanciato; è ottimo per le ricerche su intervalli",
+      "Calcola dalla chiave l'indirizzo del blocco; ~1 accesso per ricerche di uguaglianza",
+      "Usa una sequenza di bit per ogni valore; è adatto a colonne con pochi valori distinti",
+      "Tiene i record ordinati su disco; la ricerca binaria non richiede strutture aggiuntive"
+    ],
+    "soluzioni": [
+      "Calcola dalla chiave l'indirizzo del blocco; ~1 accesso per ricerche di uguaglianza"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "In che cosa consiste il problema delle collisioni e come si affronta?",
+    "opzioni": [
+      "Due transazioni modificano lo stesso record; si risolvono con i lock sulle righe",
+      "La funzione hash è iniettiva; si risolvono sostituendola con una non iniettiva",
+      "Chiavi diverse finiscono nello stesso indirizzo; si usano overflow o posizioni libere",
+      "Chiavi uguali finiscono in indirizzi diversi; si risolve riordinando il file sulla chiave hash"
+    ],
+    "soluzioni": [
+      "Chiavi diverse finiscono nello stesso indirizzo; si usano overflow o posizioni libere"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale affermazione su record spanned e unspanned è corretta?",
+    "opzioni": [
+      "Unspanned: record in un solo blocco, semplice ma spreca spazio; spanned: record su più blocchi",
+      "Spanned: record in un solo blocco, semplice ma spreca spazio; unspanned: record su più blocchi",
+      "Unspanned è necessario per i record più grandi di un blocco, spanned per quelli più piccoli",
+      "Spanned e unspanned sono sinonimi di formato dei record fisso e formato auto-descrittivo"
+    ],
+    "soluzioni": [
+      "Unspanned: record in un solo blocco, semplice ma spreca spazio; spanned: record su più blocchi"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "In base a cosa si calcola il costo di un'operazione su un DBMS?",
+    "opzioni": [
+      "Dal numero di istruzioni macchina eseguite dalla CPU",
+      "Dal numero di blocchi letti o scritti su disco",
+      "Dal numero di tuple restituite dalla query",
+      "Dalla lunghezza del testo della query SQL"
+    ],
+    "soluzioni": [
+      "Dal numero di blocchi letti o scritti su disco"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che cosa sono le euristiche push selections down e push projections down?",
+    "opzioni": [
+      "Eseguire selezioni e proiezioni per ultime, vicino alla radice dell'albero",
+      "Eliminare dalla query le selezioni e le proiezioni che risultano superflue",
+      "Eseguire selezioni e proiezioni il prima possibile, vicino alle foglie",
+      "Trasformare selezioni e proiezioni in join, che il DBMS esegue più velocemente"
+    ],
+    "soluzioni": [
+      "Eseguire selezioni e proiezioni il prima possibile, vicino alle foglie"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Nell'ambito del modello relazionale, quale dei seguenti tipi di vincoli necessita tipicamente, per la sua verifica, di un controllo su più relazioni?",
+    "opzioni": [
+      "Integrità referenziale",
+      "Chiave",
+      "Superchiave",
+      "Nessuno dei precedenti"
+    ],
+    "soluzioni": [
+      "Integrità referenziale"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "A cosa serve un Data Manipulation Language (DML)?",
+    "opzioni": [
+      "Per l'aggiornamento ma non per l'interrogazione di istanze nella base di dati",
+      "Per la definizione e la modifica di schemi (logici, esterni, fisici)",
+      "Per la definizione ma non per la modifica di schemi (logici, esterni, fisici)",
+      "Per l'interrogazione e l'aggiornamento di istanze nella base di dati"
+    ],
+    "soluzioni": [
+      "Per l'interrogazione e l'aggiornamento di istanze nella base di dati"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Cosa si intende dicendo che \"il modello relazionale è basato sui valori\"?",
+    "opzioni": [
+      "Che il modello relazionale non ammette valori nulli per le superchiavi",
+      "Che il modello relazionale è orientato a memorizzare valori complessi e non dati binari",
+      "Che il livello fisico si basa sull'uso di puntatori fisici per indicizzare i valori delle relazioni",
+      "Che i riferimenti tra tuple contenenti informazioni che si riferiscono allo stesso individuo sono realizzati in base ai valori di uno o più attributi"
+    ],
+    "soluzioni": [
+      "Che i riferimenti tra tuple contenenti informazioni che si riferiscono allo stesso individuo sono realizzati in base ai valori di uno o più attributi"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "In quali casi la modalità di memorizzazione dei record \"Column Store\" è preferibile a \"Row Store\"?",
+    "opzioni": [
+      "La seconda è sempre preferibile alla prima perché determina minor consumo di spazio",
+      "La prima è sempre preferibile alla seconda perché più semplice da implementare",
+      "Quando si devono fare frequentemente query che coinvolgono un'unica colonna delle tuple della tabella",
+      "Quando si devono fare frequentemente query che coinvolgono tutte le colonne delle tuple"
+    ],
+    "soluzioni": [
+      "Quando si devono fare frequentemente query che coinvolgono un'unica colonna delle tuple della tabella"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che cos'è lo schema esterno e perché è utile creare viste?",
+    "opzioni": [
+      "La rappresentazione dei dati su disco; le viste velocizzano le scritture",
+      "Una vista parziale o derivata dei dati; le viste semplificano le query",
+      "Lo schema concettuale ER; le viste servono a definire le chiavi primarie",
+      "Una copia di backup del database; le viste servono al ripristino dai guasti"
+    ],
+    "soluzioni": [
+      "Una vista parziale o derivata dei dati; le viste semplificano le query"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che ruolo hanno le viste nella privatezza dei dati?",
+    "opzioni": [
+      "Cifrano i dati della tabella di base, rendendoli leggibili solo agli autorizzati",
+      "Nessuno: la privatezza si gestisce solo con i permessi sui file a livello fisico",
+      "Impediscono a chiunque, amministratore compreso, l'accesso alla tabella di base",
+      "Si concedono i privilegi sulla vista, che mostra solo le righe autorizzate"
+    ],
+    "soluzioni": [
+      "Si concedono i privilegi sulla vista, che mostra solo le righe autorizzate"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Ogni relazione R ha almeno una chiave?",
+    "opzioni": [
+      "No: una relazione che contiene tuple duplicate non ha alcuna chiave",
+      "Sì: l'insieme di tutti gli attributi è superchiave, e contiene una chiave",
+      "No: se tutti gli attributi ammettono NULL non può esistere una chiave",
+      "Sì: il DBMS aggiunge automaticamente una chiave artificiale a ogni tabella"
+    ],
+    "soluzioni": [
+      "Sì: l'insieme di tutti gli attributi è superchiave, e contiene una chiave"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale associazione tra ruolo e compiti è corretta?",
+    "opzioni": [
+      "Il DBA scrive e mantiene il codice sorgente del software DBMS",
+      "Gli utenti finali gestiscono autorizzazioni e prestazioni del sistema",
+      "Il DBA gestisce risorse, prestazioni, affidabilità e autorizzazioni",
+      "Gli sviluppatori di applicazioni progettano e realizzano il DBMS"
+    ],
+    "soluzioni": [
+      "Il DBA gestisce risorse, prestazioni, affidabilità e autorizzazioni"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Si considerino due attributi A e B con domini DA = {x, y, z} e DB = {5, 12}. Quale tra le seguenti è una relazione su (A, B)?",
+    "opzioni": [
+      "{(z, 5), (z, 5)}",
+      "{(5, z), (x, 12)}",
+      "{(z, 5), (x, 12)}",
+      "{(x, 10), (z, 5)}"
+    ],
+    "soluzioni": [
+      "{(z, 5), (x, 12)}"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Rappresentando un indice bitmap in forma tabellare, a cosa corrispondono righe, colonne e celle?",
+    "opzioni": [
+      "Righe: blocchi del disco · colonne: chiavi della tabella · celle: puntatori ai record",
+      "Righe: tuple della tabella · colonne: valori distinti della colonna · celle: 0 o 1",
+      "Righe: valori distinti · colonne: pagine del buffer · celle: contatori di utilizzo",
+      "Righe e colonne: tuple della tabella · celle: distanza tra le due tuple"
+    ],
+    "soluzioni": [
+      "Righe: tuple della tabella · colonne: valori distinti della colonna · celle: 0 o 1"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale vantaggio ha un indice bitmap rispetto a un B-tree?",
+    "opzioni": [
+      "È più efficiente del B-tree per le ricerche su intervalli di valori",
+      "Regge meglio del B-tree tabelle con molti aggiornamenti concorrenti",
+      "Funziona meglio del B-tree su colonne con valori tutti diversi tra loro",
+      "Combina condizioni su più colonne con AND/OR bit a bit, molto veloci"
+    ],
+    "soluzioni": [
+      "Combina condizioni su più colonne con AND/OR bit a bit, molto veloci"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Perché un indice bitmap non è adatto a una colonna che è chiave della tabella?",
+    "opzioni": [
+      "Perché le colonne chiave non possono essere indicizzate in nessun modo",
+      "Perché servirebbe una colonna di bit per ogni tupla: indice enorme",
+      "Perché le colonne chiave possono contenere valori nulli in alcune tuple",
+      "Perché un indice bitmap funziona solo su colonne di tipo numerico intero"
+    ],
+    "soluzioni": [
+      "Perché servirebbe una colonna di bit per ogni tupla: indice enorme"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale affermazione sui formati dei record fisso e auto-descrittivo è corretta?",
+    "opzioni": [
+      "Il formato fisso memorizza in ogni record anche nomi e tipi dei campi",
+      "Il formato auto-descrittivo è più compatto, perché non ripete lo schema",
+      "Il fisso è compatto ma rigido; l'auto-descrittivo flessibile ma più pesante",
+      "I due formati differiscono soltanto per l'ordine in cui sono scritti i campi"
+    ],
+    "soluzioni": [
+      "Il fisso è compatto ma rigido; l'auto-descrittivo flessibile ma più pesante"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "È sempre utile creare un indice? In quali casi conviene?",
+    "opzioni": [
+      "Sì: conviene sempre indicizzare tutte le colonne di tutte le tabelle",
+      "No: conviene se si recupera spesso una piccola parte delle righe",
+      "No: gli indici servono esclusivamente per le chiavi primarie",
+      "Sì: gli indici non occupano spazio e non rallentano le modifiche"
+    ],
+    "soluzioni": [
+      "No: conviene se si recupera spesso una piccola parte delle righe"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Perché non ha senso indicizzare una colonna se le query recuperano di solito più della metà delle righe?",
+    "opzioni": [
+      "Perché l'indice restituirebbe risultati errati quando le righe sono tante",
+      "Perché il DBMS non permette indici su tabelle molto grandi",
+      "Perché si leggerebbero comunque quasi tutti i blocchi, più l'indice",
+      "Perché l'indice verrebbe cancellato automaticamente dal DBMS"
+    ],
+    "soluzioni": [
+      "Perché si leggerebbero comunque quasi tutti i blocchi, più l'indice"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Contrassegnare le affermazioni corrette (possono essere più di una)",
+    "opzioni": [
+      "Quello relazionale si dice un modello basato sui puntatori, in quanto i riferimenti fra dati in relazioni diverse sono rappresentati per mezzo di puntatori numerici che collegano le tuple",
+      "L'indipendenza dei dati permette di scrivere programmi conoscendo solo lo schema concettuale della base di dati",
+      "Nell'ambito del modello relazionale, data una relazione, esiste sempre una e una sola superchiave minimale",
+      "Una superchiave non minimale può essere costituita da un singolo attributo",
+      "Il modello relazionale è un modello sia logico che concettuale",
+      "Nell'ambito del modello relazionale, data una relazione, esiste sempre una chiave composta da un singolo attributo",
+      "Ogni relazione priva di vincoli di integrità referenziale soddisfa necessariamente la BCNF (Boyce-Codd Normal Form)",
+      "Il modello entità-relazione (ER) è un modello concettuale",
+      "I valori nulli non sono mai ammessi per gli attributi che formano una superchiave",
+      "Il linguaggio SQL include sia istruzioni Data Definition Language (DDL) sia istruzioni Data Manipulation Language (DML)",
+      "Lo schema esterno è una \"vista\" parziale o derivata di una parte della base di dati in un modello logico"
+    ],
+    "soluzioni": [
+      "Il modello entità-relazione (ER) è un modello concettuale",
+      "Il linguaggio SQL include sia istruzioni Data Definition Language (DDL) sia istruzioni Data Manipulation Language (DML)",
+      "Lo schema esterno è una \"vista\" parziale o derivata di una parte della base di dati in un modello logico"
+    ],
+    "tipologia": "multiple"
+  },
+  {
+    "domanda": "Qual è la differenza principale tra relazione matematica e relazione del modello relazionale dei dati?",
+    "opzioni": [
+      "La matematica è un insieme di tuple, quella del modello è una lista ordinata",
+      "Nella matematica conta la posizione, nel modello ogni dominio ha un nome",
+      "Solo la relazione matematica può contenere valori nulli nelle sue tuple",
+      "Nel modello relazionale le tuple possono ripetersi, in quella matematica no"
+    ],
+    "soluzioni": [
+      "Nella matematica conta la posizione, nel modello ogni dominio ha un nome"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Che cos'è il buffer manager?",
+    "opzioni": [
+      "Il modulo che traduce le query SQL in espressioni di algebra relazionale",
+      "Il modulo che gestisce il buffer in RAM per ridurre gli accessi al disco",
+      "Il modulo che controlla le autorizzazioni e i privilegi degli utenti",
+      "Il file su cui si registrano le operazioni per il ripristino dopo un guasto"
+    ],
+    "soluzioni": [
+      "Il modulo che gestisce il buffer in RAM per ridurre gli accessi al disco"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale primitiva del buffer manager scrive una pagina su disco in modo sincrono?",
+    "opzioni": [
+      "fix",
+      "setDirty",
+      "unfix",
+      "force"
+    ],
+    "soluzioni": [
+      "force"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale indice conviene per le range query?",
+    "opzioni": [
+      "Un indice hash, perché ogni ricerca costa circa un solo accesso",
+      "Un indice bitmap, perché la colonna ha molti valori diversi",
+      "Un B+ tree, perché le foglie collegate si scorrono in ordine",
+      "Nessun indice, perché le range query non possono usare indici"
+    ],
+    "soluzioni": [
+      "Un B+ tree, perché le foglie collegate si scorrono in ordine"
+    ],
+    "tipologia": "singola"
+  },
+  {
+    "domanda": "Quale descrizione degli algoritmi di join è corretta?",
+    "opzioni": [
+      "Il nested-loop vale per ogni condizione; l'hash-join solo per l'uguaglianza",
+      "L'hash-join vale per ogni condizione; il nested-loop solo per l'uguaglianza",
+      "Il merge-join non richiede input ordinati e funziona con qualsiasi condizione",
+      "L'unico algoritmo di join è il prodotto cartesiano seguito da una selezione"
+    ],
+    "soluzioni": [
+      "Il nested-loop vale per ogni condizione; l'hash-join solo per l'uguaglianza"
+    ],
+    "tipologia": "singola"
+  }
+]

@@ -28,10 +28,10 @@
 *Testo originale: "Possono esistere attributi di una tabella che non appartengono a nessuna superchiave? Motivare la risposta."*
 
 Possono esistere attributi di una tabella che non appartengono a nessuna superchiave?
-- **A)** Sì: gli attributi che non fanno parte di alcuna chiave
-- **B)** Sì: gli attributi che ammettono valori nulli
-- **C)** No: l'insieme di tutti gli attributi è sempre una superchiave, quindi ogni attributo ne fa parte
-- **D)** Dipende dall'istanza della relazione
+- **A)** Sì: gli attributi che non fanno parte di alcuna chiave della relazione
+- **B)** Sì: gli attributi che possono assumere il valore NULL in qualche tupla
+- **C)** No: l'insieme di tutti gli attributi è sempre una superchiave
+- **D)** Dipende dall'istanza: succede se la relazione ha tuple quasi uguali
 
 > [!success]- Risposta
 > **C)** Una relazione non contiene tuple uguali, quindi l'insieme di **tutti** i suoi attributi distingue sempre le tuple: è una superchiave, e contiene ogni attributo. La A confonde superchiavi e chiavi: un attributo può non appartenere a nessuna **chiave**, ma appartiene sempre ad almeno una superchiave.
@@ -40,10 +40,10 @@ Possono esistere attributi di una tabella che non appartengono a nessuna superch
 *Testo originale: "Una superchiave non minimale può essere sottoinsieme di una chiave primaria? Motivare la risposta."*
 
 Una superchiave non minimale può essere sottoinsieme di una chiave primaria?
-- **A)** Sì, se ha meno attributi della chiave primaria
-- **B)** No: in quel caso la chiave primaria conterrebbe propriamente una superchiave, e non sarebbe minimale
-- **C)** Sì, sempre
-- **D)** Solo se la chiave primaria è una chiave artificiale
+- **A)** Sì, se la superchiave ha meno attributi della chiave primaria
+- **B)** No, perché la chiave primaria non sarebbe più minimale
+- **C)** Sì, sempre: ogni superchiave è contenuta in una chiave primaria
+- **D)** Solo se la chiave primaria è una chiave artificiale (surrogata)
 
 > [!success]- Risposta
 > **B)** Se una superchiave $S$ fosse contenuta nella chiave primaria $K$, allora $K$ conterrebbe una superchiave diversa da sé, contro la definizione di chiave (superchiave **minimale**). Il ragionamento vale per qualunque chiave, primaria o no.
@@ -52,13 +52,13 @@ Una superchiave non minimale può essere sottoinsieme di una chiave primaria?
 *Testo originale: "Cosa si intende per livello fisico, logico ed esterno di un DBMS?"*
 
 Quale descrizione dei tre livelli dell'architettura di un DBMS è corretta?
-- **A)** Esterno: strutture di memorizzazione su disco · Logico: viste dei singoli utenti · Fisico: descrizione dell'intera base di dati
-- **B)** Esterno: vista parziale o derivata di una parte della base di dati, per utenti e applicazioni · Logico: descrizione dell'intera base di dati nel modello logico del DBMS · Fisico: rappresentazione dello schema logico tramite strutture di memorizzazione
-- **C)** Esterno: interfaccia grafica del DBMS · Logico: schema ER · Fisico: hardware del server
-- **D)** Esterno e logico coincidono sempre; il fisico descrive le tabelle
+- **A)** Esterno: strutture di memorizzazione su disco · Logico: le viste dei singoli utenti · Fisico: l'intera base di dati
+- **B)** Esterno: viste per utenti e applicazioni · Logico: l'intera base di dati · Fisico: strutture di memorizzazione
+- **C)** Esterno: l'interfaccia grafica del DBMS · Logico: lo schema ER del progetto · Fisico: l'hardware del server che ospita i dati
+- **D)** Esterno: l'intera base di dati · Logico: le strutture di memorizzazione · Fisico: le viste degli utenti sui file
 
 > [!success]- Risposta
-> **B)** È l'architettura ANSI/SPARC a tre livelli. L'accesso ai dati avviene solo dal livello esterno (che può coincidere con il logico), da cui derivano l'indipendenza **fisica** (logico ed esterno non dipendono dal fisico) e **logica** (l'esterno non dipende dal logico).
+> **B)** È l'architettura ANSI/SPARC a tre livelli: lo schema esterno è una vista parziale o derivata di una parte della base di dati, quello logico descrive l'intera base di dati nel modello logico del DBMS, quello fisico rappresenta lo schema logico tramite strutture di memorizzazione. L'accesso avviene solo dal livello esterno (che può coincidere con il logico), da cui derivano l'indipendenza **fisica** e **logica**.
 
 #### 4.
 *Testo originale: "Quante chiavi diverse può avere una relazione con 2 attributi? Motivare la risposta."*
@@ -76,10 +76,10 @@ Quante chiavi diverse può avere al massimo una relazione R(A, B)?
 *Testo originale: "Quali sono i vantaggi e gli svantaggi di un DBMS che supporta le proprietà ACID rispetto ad uno che non le supporta?"*
 
 Quale affermazione descrive correttamente vantaggi e svantaggi di un DBMS che supporta le proprietà ACID?
-- **A)** Garantisce transazioni affidabili anche in presenza di concorrenza e guasti, ma garantire queste proprietà ha un costo in termini di efficienza
-- **B)** È più veloce, ma meno affidabile di un DBMS senza ACID
-- **C)** Rende superflui i vincoli di integrità
-- **D)** Non ha svantaggi: tutti i DBMS moderni, NoSQL compresi, garantiscono ACID completo
+- **A)** Transazioni affidabili con concorrenza e guasti, al prezzo di una minore efficienza
+- **B)** Maggiore velocità rispetto ai DBMS senza ACID, al prezzo di una minore affidabilità
+- **C)** Vincoli di integrità superflui, perché le transazioni garantiscono già la correttezza
+- **D)** Nessuno svantaggio: anche tutti i NoSQL garantiscono ACID completo senza alcun costo
 
 > [!success]- Risposta
 > **A)** Atomicità, consistenza, isolamento e durability rendono le transazioni affidabili, ma la loro realizzazione (log, controllo della concorrenza…) pesa sulle prestazioni. Per questo molti NoSQL adottano proprietà più deboli (BASE), mentre i NewSQL cercano di conciliare ACID ed efficienza.
@@ -88,25 +88,25 @@ Quale affermazione descrive correttamente vantaggi e svantaggi di un DBMS che su
 *Testo originale: "Per quale motivo ogni relazione che soddisfa la BCNF (Boyce-Codd Normal Form) soddisfa anche la 3NF (Third Normal Form)?"*
 
 Perché ogni relazione in BCNF è anche in 3NF?
-- **A)** Perché la 3NF richiede più condizioni della BCNF
-- **B)** Perché la 3NF richiede che, per ogni dipendenza funzionale non banale $X \to Y$, $X$ sia superchiave **oppure** ogni attributo di $Y$ appartenga a una chiave; la BCNF richiede sempre la prima condizione, quindi soddisfa anche la disgiunzione
-- **C)** Non è vero: esistono relazioni in BCNF che non sono in 3NF
-- **D)** Perché entrambe vietano qualsiasi dipendenza funzionale
+- **A)** Perché la 3NF impone condizioni più restrittive della BCNF su ogni dipendenza
+- **B)** Perché la condizione della BCNF è uno dei due casi ammessi dalla 3NF
+- **C)** Non è vero: esistono relazioni in BCNF che non soddisfano la 3NF
+- **D)** Perché entrambe vietano qualsiasi dipendenza funzionale non banale
 
 > [!success]- Risposta
-> **B)** La condizione della BCNF ("$X$ è superchiave") è uno dei due casi ammessi dalla 3NF: la 3NF è quindi **più permissiva**, e ogni relazione in BCNF è automaticamente in 3NF (non vale il contrario).
+> **B)** La 3NF richiede che, per ogni dipendenza funzionale non banale $X \to Y$, $X$ sia superchiave **oppure** ogni attributo di $Y$ appartenga a una chiave. La BCNF richiede sempre la prima condizione: la 3NF è quindi **più permissiva**, e ogni relazione in BCNF è automaticamente in 3NF (non vale il contrario).
 
 #### 7.
 *Testo originale: "Cosa si intende per formato dei record fisso e auto-descrittivo per la scrittura dei record su disco? Quali sono i vantaggi e gli svantaggi di ognuno dei due?"*
 
 Quale affermazione sui formati dei record è corretta?
-- **A)** Nel formato fisso lo schema (campi, tipi, lunghezze) è nel direttorio e il record contiene solo i dati: compatto e veloce, ma rigido. Nel formato auto-descrittivo ogni record contiene anche i metadati: flessibile, ma occupa più spazio e richiede più elaborazione
-- **B)** Nel formato fisso ogni record contiene i propri metadati; nell'auto-descrittivo lo schema sta nel direttorio
-- **C)** Il formato auto-descrittivo occupa sempre meno spazio di quello fisso
-- **D)** Solo il formato fisso permette di avere record con campi diversi
+- **A)** Fisso: schema nel direttorio e solo dati nel record; auto-descrittivo: anche i metadati nel record
+- **B)** Fisso: metadati in ogni record; auto-descrittivo: schema nel direttorio, solo dati nei record
+- **C)** Fisso e auto-descrittivo differiscono solo per l'ordine in cui i campi sono scritti nel record
+- **D)** Auto-descrittivo occupa meno spazio, perché non ripete in ogni record le informazioni sullo schema
 
 > [!success]- Risposta
-> **A)** Nell'esempio delle slide, il record auto-descrittivo `2 | 5 | I | 46 | 4 | S | 4 | FORD` contiene numero di campi, codici, tipi e lunghezze. Questo permette record con campi diversi o opzionali (contro la D), al prezzo di spazio ed elaborazione in più (contro la C).
+> **A)** Il formato fisso è **compatto e veloce** (gli offset dei campi sono noti) ma **rigido**; quello auto-descrittivo è **flessibile** (record con campi diversi o opzionali) ma occupa **più spazio** e richiede più elaborazione. Nell'esempio delle slide il record auto-descrittivo `2 | 5 | I | 46 | 4 | S | 4 | FORD` contiene numero di campi, codici, tipi e lunghezze. La B inverte i due formati; la D è falsa perché è il formato auto-descrittivo a ripetere lo schema in ogni record.
 
 ### Esercizi di algebra relazionale
 
@@ -224,44 +224,44 @@ Quali di questi insiemi di attributi sono chiavi di R: {A}, {A, E}, {A, E, G}? D
 #### 5.
 *Testo originale: "Spiegare cosa si intende per indipendenza logica e fisica dei dati."*
 
-Quale coppia di definizioni è corretta?
-- **A)** Indipendenza fisica: il livello esterno è indipendente da quello logico · Indipendenza logica: i livelli logico ed esterno sono indipendenti da quello fisico
-- **B)** Indipendenza fisica: i programmi non dipendono dall'hardware del server · Indipendenza logica: i programmi non dipendono dal linguaggio SQL
-- **C)** Indipendenza fisica: i livelli logico ed esterno sono indipendenti dal fisico, quindi la realizzazione fisica può cambiare senza modificare i programmi · Indipendenza logica: il livello esterno è indipendente dal logico, quindi le modifiche allo schema logico che lasciano invariato lo schema esterno sono trasparenti
-- **D)** Sono sinonimi
+Quale coppia di definizioni di indipendenza fisica e logica dei dati è corretta?
+- **A)** Fisica: l'esterno non dipende dal logico · Logica: logico ed esterno non dipendono dal fisico
+- **B)** Fisica: i programmi non dipendono dall'hardware · Logica: i programmi non dipendono da SQL
+- **C)** Fisica: logico ed esterno non dipendono dal fisico · Logica: l'esterno non dipende dal logico
+- **D)** Fisica: le viste non dipendono dalle tabelle · Logica: le tabelle non dipendono dagli indici
 
 > [!success]- Risposta
-> **C)** La A inverte le due definizioni. Entrambe derivano dall'architettura a tre livelli: l'utente accede ai dati solo tramite il livello esterno.
+> **C)** Con l'indipendenza fisica la realizzazione fisica (file, indici…) può cambiare senza modificare i programmi; con l'indipendenza logica le modifiche allo schema logico che lasciano invariato lo schema esterno sono trasparenti. La A inverte le due definizioni. Entrambe derivano dall'architettura a tre livelli: l'utente accede ai dati solo tramite il livello esterno.
 
 #### 6.
 *Testo originale: "Spiegare le analogie e le differenze tra la relazione matematica e la relazione del modello relazionale di una base di dati."*
 
-Quale affermazione descrive correttamente analogie e differenze?
-- **A)** Entrambe sono insiemi di tuple distinte, senza ordine tra le tuple; la relazione matematica ha una struttura **posizionale**, mentre nel modello relazionale ogni dominio ha un **nome** (attributo), quindi l'ordine delle colonne è irrilevante
-- **B)** La relazione matematica ammette tuple duplicate, quella del modello relazionale no
-- **C)** Nel modello relazionale l'ordine delle colonne è significativo, nella relazione matematica no
-- **D)** Non ci sono differenze
+Quale affermazione descrive correttamente analogie e differenze tra la relazione matematica e la relazione del modello relazionale?
+- **A)** Entrambe sono insiemi di tuple; la matematica è posizionale, l'altra usa nomi di attributo
+- **B)** La matematica ammette tuple duplicate, mentre quella del modello relazionale non le ammette
+- **C)** Nel modello relazionale conta l'ordine delle colonne, nella relazione matematica invece no
+- **D)** Nessuna differenza: sono due nomi diversi per lo stesso concetto, con le stesse proprietà
 
 > [!success]- Risposta
-> **A)** Nella relazione matematica il ruolo di un valore dipende dalla posizione (in `Partite ⊆ String × String × Int × Int` la prima stringa è la squadra di casa); nel modello relazionale lo dice il nome dell'attributo (`Casa`, `Fuori`, `RetiCasa`, `RetiFuori`).
+> **A)** Entrambe sono insiemi di tuple distinte, senza ordine tra le tuple. Nella relazione matematica il ruolo di un valore dipende dalla posizione (in `Partite ⊆ String × String × Int × Int` la prima stringa è la squadra di casa); nel modello relazionale lo dice il nome dell'attributo (`Casa`, `Fuori`, …), quindi anche l'ordine delle colonne è irrilevante.
 
 #### 7.
 *Testo originale: "Qual è la semantica del valore NULL? Cosa succede se in una selezione si applica una condizione (ad esempio `SELECT … WHERE Stipendio > 50000`) su un attributo (ad es. `Stipendio`) che ha valore NULL?"*
 
 **7a.** Che cosa rappresenta il valore `NULL`?
 - **A)** Il valore 0 per i numeri e la stringa vuota per i testi
-- **B)** L'assenza di un valore del dominio: un valore inesistente oppure sconosciuto
-- **C)** Un valore speciale del dominio, uguale a tutti gli altri `NULL`
-- **D)** Un errore nei dati, che il DBMS segnala
+- **B)** L'assenza di un valore: inesistente oppure sconosciuto
+- **C)** Un valore speciale del dominio, uguale a ogni altro NULL
+- **D)** Un errore nei dati, che il DBMS segnala all'utente
 
 > [!success]- Risposta
 > **B)** `NULL` non è un valore del dominio: indica che il valore **manca**. Usare valori come 0 o la stringa vuota (A) è sconsigliato, perché potrebbero diventare significativi e andrebbero interpretati in ogni programma.
 
 **7b.** Che cosa succede alle righe con `Stipendio = NULL` in una query con `WHERE Stipendio > 50000`?
-- **A)** Vengono restituite, perché `NULL` soddisfa qualunque condizione
-- **B)** La query termina con un errore
-- **C)** Vengono trattate come se lo stipendio fosse 0
-- **D)** Non vengono restituite, perché il confronto con `NULL` non è vero
+- **A)** Vengono restituite, perché NULL soddisfa ogni condizione
+- **B)** La query si interrompe con un errore di tipo sul confronto
+- **C)** Vengono trattate come se il loro stipendio valesse zero
+- **D)** Non vengono restituite: il confronto con NULL non è vero
 
 > [!success]- Risposta
 > **D)** Una condizione atomica è vera solo per valori non nulli. Per includere quelle righe bisogna aggiungere esplicitamente `OR Stipendio IS NULL`.
@@ -339,55 +339,55 @@ Elencare il codice fiscale delle persone che posseggono sia una 'BMW' sia una 'K
 *Testo originale: "Spiegare brevemente il funzionamento di un indice Hash. Quali vantaggi ha un indice Hash rispetto ad un B Tree? In cosa consiste il problema delle collisioni e come si può risolvere?"*
 
 **1a.** Come funziona un indice hash e qual è il suo vantaggio rispetto a un B-tree?
-- **A)** Ordina le chiavi in un albero bilanciato; è più efficiente per le ricerche su intervalli
-- **B)** Una funzione hash calcola, dal valore della chiave, l'indirizzo del blocco che contiene il record; per le ricerche di **uguaglianza** costa circa 1 accesso, contro profondità + 1 di un B-tree
-- **C)** Memorizza una sequenza di bit per ogni valore della colonna; è adatto alle colonne con pochi valori
-- **D)** Mantiene i record ordinati sul disco; non richiede alcun calcolo per la ricerca
+- **A)** Ordina le chiavi in un albero bilanciato; è ottimo per le ricerche su intervalli
+- **B)** Calcola dalla chiave l'indirizzo del blocco; ~1 accesso per ricerche di uguaglianza
+- **C)** Usa una sequenza di bit per ogni valore; è adatto a colonne con pochi valori distinti
+- **D)** Tiene i record ordinati su disco; la ricerca binaria non richiede strutture aggiuntive
 
 > [!success]- Risposta
-> **B)** Lo svantaggio è che l'hash **non** serve per le ricerche su intervalli, dove il B-tree (A) è migliore. La C descrive l'indice bitmap.
+> **B)** Una funzione hash calcola dal valore della chiave l'indirizzo del blocco: per le ricerche di **uguaglianza** costa circa 1 accesso, contro profondità + 1 di un B-tree. Lo svantaggio è che l'hash **non** serve per le ricerche su intervalli, dove il B-tree (A) è migliore. La C descrive l'indice bitmap.
 
 **1b.** In che cosa consiste il problema delle collisioni e come si affronta?
-- **A)** Due transazioni modificano lo stesso record; si risolve con i lock
-- **B)** La funzione hash è iniettiva; si risolve rendendola non iniettiva
-- **C)** Chiavi diverse finiscono nello stesso indirizzo, perché i possibili valori sono molti più degli indirizzi; si riducono con una buona funzione hash e spazio ridondante, e si gestiscono con posizioni successive o aree di overflow
-- **D)** Due chiavi uguali finiscono in indirizzi diversi; si risolve ordinando il file
+- **A)** Due transazioni modificano lo stesso record; si risolvono con i lock sulle righe
+- **B)** La funzione hash è iniettiva; si risolvono sostituendola con una non iniettiva
+- **C)** Chiavi diverse finiscono nello stesso indirizzo; si usano overflow o posizioni libere
+- **D)** Chiavi uguali finiscono in indirizzi diversi; si risolve riordinando il file sulla chiave hash
 
 > [!success]- Risposta
-> **C)** La funzione hash $h: C \to I$ con $|I| \ll |C|$ non può essere iniettiva. Raggruppare le posizioni in blocchi (fattore di blocco) riduce ulteriormente gli overflow.
+> **C)** La funzione hash $h: C \to I$ con $|I| \ll |C|$ non può essere iniettiva. Le collisioni si **riducono** con una buona funzione hash e con spazio ridondante, e si **gestiscono** con posizioni successive o aree di overflow. Raggruppare le posizioni in blocchi (fattore di blocco) riduce ulteriormente gli overflow.
 
 #### 2.
 *Testo originale: "Nella scrittura dei record su file system, un DBMS può usare una tecnica spanned oppure unspanned. Spiegare cosa si intende per tecnica spanned e unspanned, e discutere vantaggi e svantaggi di entrambe."*
 
 Quale affermazione su record spanned e unspanned è corretta?
-- **A)** Unspanned: ogni record sta in un solo blocco, più semplice e veloce ma spreca spazio · Spanned: un record può essere diviso su più blocchi, sfrutta meglio lo spazio ed è necessario per record più grandi di un blocco, ma è più complesso
-- **B)** Spanned: ogni record sta in un solo blocco · Unspanned: un record può essere diviso su più blocchi
-- **C)** Unspanned è necessario per i record più grandi di un blocco
-- **D)** Spanned e unspanned indicano rispettivamente formato fisso e auto-descrittivo
+- **A)** Unspanned: record in un solo blocco, semplice ma spreca spazio; spanned: record su più blocchi
+- **B)** Spanned: record in un solo blocco, semplice ma spreca spazio; unspanned: record su più blocchi
+- **C)** Unspanned è necessario per i record più grandi di un blocco, spanned per quelli più piccoli
+- **D)** Spanned e unspanned sono sinonimi di formato dei record fisso e formato auto-descrittivo
 
 > [!success]- Risposta
-> **A)** La B inverte le definizioni; la C è falsa perché un record più grande di un blocco non può stare in un solo blocco.
+> **A)** Con spanned un record può essere diviso su più blocchi: sfrutta meglio lo spazio ed è **necessario** per i record più grandi di un blocco, ma è più complesso. La B inverte le definizioni; la C è falsa perché un record più grande di un blocco non può stare in un solo blocco.
 
 #### 3.
 *Testo originale: "In base a cosa si calcola il costo di una operazione su un DBMS? Nell'architettura di un DBMS, quale processo di ottimizzazione attua l'ottimizzatore delle query? Spiegare cosa si intende per euristica 'Push selections down' e 'Push projections down', e perché queste euristiche possono diminuire il costo di esecuzione di una query."*
 
 **3a.** In base a cosa si calcola il costo di un'operazione su un DBMS?
-- **A)** In base al numero di istruzioni eseguite dalla CPU
-- **B)** In base al numero di accessi alla memoria secondaria (blocchi letti o scritti)
-- **C)** In base al numero di tuple restituite
-- **D)** In base alla lunghezza della query SQL
+- **A)** Dal numero di istruzioni macchina eseguite dalla CPU
+- **B)** Dal numero di blocchi letti o scritti su disco
+- **C)** Dal numero di tuple restituite dalla query
+- **D)** Dalla lunghezza del testo della query SQL
 
 > [!success]- Risposta
-> **B)** Un accesso al disco costa quattro o più ordini di grandezza più di un'operazione in memoria centrale.
+> **B)** Un accesso alla memoria secondaria costa quattro o più ordini di grandezza più di un'operazione in memoria centrale, quindi si contano solo i blocchi letti o scritti.
 
 **3b.** Che cosa sono le euristiche *push selections down* e *push projections down*?
-- **A)** Spostare selezioni e proiezioni verso la radice dell'albero della query, cioè eseguirle per ultime
-- **B)** Eliminare selezioni e proiezioni dalla query
-- **C)** Eseguire selezioni e proiezioni il prima possibile (verso le foglie dell'albero), sostituendo la query con un'espressione equivalente che produce risultati intermedi più piccoli
-- **D)** Trasformare le selezioni in join
+- **A)** Eseguire selezioni e proiezioni per ultime, vicino alla radice dell'albero
+- **B)** Eliminare dalla query le selezioni e le proiezioni che risultano superflue
+- **C)** Eseguire selezioni e proiezioni il prima possibile, vicino alle foglie
+- **D)** Trasformare selezioni e proiezioni in join, che il DBMS esegue più velocemente
 
 > [!success]- Risposta
-> **C)** Fanno parte dell'**ottimizzazione algebrica**, basata sull'equivalenza delle espressioni. Ad esempio $\sigma_{A=10}(R_1 \bowtie R_2)$ diventa $R_1 \bowtie \sigma_{A=10}(R_2)$: il join lavora su meno tuple (e, con la proiezione anticipata, su tuple più piccole), quindi legge e scrive meno blocchi.
+> **C)** Fanno parte dell'**ottimizzazione algebrica**: la query viene sostituita da un'espressione **equivalente** che produce risultati intermedi più piccoli. Ad esempio $\sigma_{A=10}(R_1 \bowtie R_2)$ diventa $R_1 \bowtie \sigma_{A=10}(R_2)$: il join lavora su meno tuple (e, con la proiezione anticipata, su tuple più piccole), quindi legge e scrive meno blocchi.
 
 ---
 
@@ -437,46 +437,46 @@ Quale affermazione su record spanned e unspanned è corretta?
 *Testo originale: "Cosa si intende per 'schema esterno' di un DBMS? Per quali motivi è utile in alcuni casi creare delle viste? Che ruolo hanno le viste riguardo alle garanzie di privatezza che un DBMS deve garantire?"*
 
 **5a.** Che cos'è lo schema esterno e perché è utile creare viste?
-- **A)** È la rappresentazione dei dati su disco; le viste servono a velocizzare le scritture
-- **B)** È una vista parziale o derivata di una parte della base di dati; le viste mostrano a ogni utente solo ciò che gli interessa, semplificano la scrittura delle interrogazioni e permettono di riusare programmi esistenti su schemi ristrutturati
-- **C)** È lo schema concettuale ER; le viste servono a definire le chiavi
-- **D)** È una copia di backup della base di dati; le viste servono al ripristino dopo un guasto
+- **A)** La rappresentazione dei dati su disco; le viste velocizzano le scritture
+- **B)** Una vista parziale o derivata dei dati; le viste semplificano le query
+- **C)** Lo schema concettuale ER; le viste servono a definire le chiavi primarie
+- **D)** Una copia di backup del database; le viste servono al ripristino dai guasti
 
 > [!success]- Risposta
-> **B)** Le viste sono relazioni **derivate**: il loro contenuto è definito da un'interrogazione su altre relazioni e le query sulle viste si eseguono sostituendo la definizione.
+> **B)** Lo schema esterno è una vista parziale o derivata di una parte della base di dati. Le viste mostrano a ogni utente solo ciò che gli interessa, semplificano la scrittura delle interrogazioni e permettono di riusare programmi esistenti su schemi ristrutturati. Sono relazioni **derivate**: le query sulle viste si eseguono sostituendo la loro definizione.
 
 **5b.** Che ruolo hanno le viste nella privatezza dei dati?
-- **A)** Cifrano i dati della tabella di base
-- **B)** Nessuno: la privatezza si gestisce solo a livello fisico
-- **C)** Impediscono qualsiasi accesso alla tabella di base, anche all'amministratore
-- **D)** Si definisce una vista che seleziona solo le righe (e colonne) che un utente può vedere e gli si concedono i privilegi sulla vista invece che sulla tabella di base
+- **A)** Cifrano i dati della tabella di base, rendendoli leggibili solo agli autorizzati
+- **B)** Nessuno: la privatezza si gestisce solo con i permessi sui file a livello fisico
+- **C)** Impediscono a chiunque, amministratore compreso, l'accesso alla tabella di base
+- **D)** Si concedono i privilegi sulla vista, che mostra solo le righe autorizzate
 
 > [!success]- Risposta
-> **D)** È il modo standard per limitare la **visibilità** a un sottoinsieme delle tuple: l'utente non ha privilegi sulla tabella di base, solo sulla vista.
+> **D)** È il modo standard per limitare la **visibilità** a un sottoinsieme delle tuple (e delle colonne): l'utente non ha privilegi sulla tabella di base, solo sulla vista.
 
 #### 6.
 *Testo originale: "Nel modello relazionale delle basi di dati, data una qualunque relazione R, è sempre vero che R ha almeno una chiave S? Se sì, dimostrarlo. Se no, mostrare l'esempio di un caso in cui R non abbia chiavi."*
 
 Ogni relazione R ha almeno una chiave?
-- **A)** No: una relazione con tuple duplicate non ha chiavi
-- **B)** Sì: R è un insieme, quindi non ha tuple uguali; perciò l'insieme di tutti i suoi attributi è una superchiave, e togliendo attributi finché resta superchiave si ottiene una chiave
-- **C)** No: se tutti gli attributi possono essere nulli non esistono chiavi
-- **D)** Sì, perché il DBMS crea automaticamente una chiave artificiale
+- **A)** No: una relazione che contiene tuple duplicate non ha alcuna chiave
+- **B)** Sì: l'insieme di tutti gli attributi è superchiave, e contiene una chiave
+- **C)** No: se tutti gli attributi ammettono NULL non può esistere una chiave
+- **D)** Sì: il DBMS aggiunge automaticamente una chiave artificiale a ogni tabella
 
 > [!success]- Risposta
-> **B)** È il teorema di esistenza delle chiavi. La A parte da un'ipotesi impossibile: una relazione non può contenere tuple duplicate.
+> **B)** È il teorema di esistenza delle chiavi: R è un insieme, quindi non ha tuple uguali; perciò l'insieme di tutti i suoi attributi è una superchiave, e togliendo attributi finché resta superchiave si ottiene una chiave. La A parte da un'ipotesi impossibile: una relazione non può contenere tuple duplicate.
 
 #### 7.
 *Testo originale: "Quali sono i principali ruoli dei professionisti che lavorano nell'ambito delle basi di dati, e quali compiti svolgono?"*
 
 Quale associazione tra ruolo e compiti è corretta?
-- **A)** Il DBA (*Database Administrator*) scrive il codice del DBMS
-- **B)** Gli utenti finali sono responsabili delle autorizzazioni e delle prestazioni
-- **C)** Il DBA è responsabile del controllo centralizzato e della gestione del sistema: risorse, prestazioni (spazio e tempo), affidabilità e autorizzazioni, e spesso anche della progettazione della base di dati
-- **D)** Gli sviluppatori di applicazioni progettano e realizzano il software del DBMS
+- **A)** Il DBA scrive e mantiene il codice sorgente del software DBMS
+- **B)** Gli utenti finali gestiscono autorizzazioni e prestazioni del sistema
+- **C)** Il DBA gestisce risorse, prestazioni, affidabilità e autorizzazioni
+- **D)** Gli sviluppatori di applicazioni progettano e realizzano il DBMS
 
 > [!success]- Risposta
-> **C)** I ruoli visti a lezione sono: progettisti e sviluppatori del **DBMS** (il software); progettisti e **amministratori della base di dati** (DBA); analisti, progettisti e sviluppatori di **applicazioni**; **utenti**. A e D attribuiscono a un ruolo i compiti dei progettisti del DBMS.
+> **C)** Il DBA (*Database Administrator*) è responsabile del controllo centralizzato del sistema, e spesso anche della progettazione della base di dati. I ruoli visti a lezione sono: progettisti e sviluppatori del **DBMS** (il software); progettisti e **amministratori della base di dati**; analisti, progettisti e sviluppatori di **applicazioni**; **utenti**. A e D attribuiscono a un ruolo i compiti dei progettisti del DBMS.
 
 ### Parte 2 — Algebra relazionale
 
@@ -548,64 +548,64 @@ Elencare nome e cognome delle persone che non posseggono nessuna automobile. Dis
 *Testo originale: "Spiegare qual è la struttura di un indice Bitmap: rappresentandolo in forma tabellare, a cosa corrispondono le righe e le colonne, e quali valori assume ogni cella? Quali vantaggi ha un indice Bitmap rispetto ad un B Tree? Per quale motivo un indice Bitmap non sarebbe adatto per indicizzare una colonna che è chiave della tabella?"*
 
 **1a.** Rappresentando un indice bitmap in forma tabellare, a cosa corrispondono righe, colonne e celle?
-- **A)** Righe: blocchi del disco · colonne: chiavi della tabella · celle: puntatori
-- **B)** Righe: le tuple della tabella · colonne: i valori distinti della colonna indicizzata · celle: 1 se la tupla ha quel valore, 0 altrimenti
-- **C)** Righe: i valori distinti · colonne: le pagine del buffer · celle: contatori
-- **D)** Righe e colonne: le tuple della tabella · celle: la distanza tra le tuple
+- **A)** Righe: blocchi del disco · colonne: chiavi della tabella · celle: puntatori ai record
+- **B)** Righe: tuple della tabella · colonne: valori distinti della colonna · celle: 0 o 1
+- **C)** Righe: valori distinti · colonne: pagine del buffer · celle: contatori di utilizzo
+- **D)** Righe e colonne: tuple della tabella · celle: distanza tra le due tuple
 
 > [!success]- Risposta
-> **B)** Ad esempio, per `Stato_Civile` ci sono le colonne *Single* e *Married* e ogni riga ha un solo 1.
+> **B)** Una cella vale 1 se la tupla ha quel valore, 0 altrimenti. Ad esempio, per `Stato_Civile` ci sono le colonne *Single* e *Married* e ogni riga ha un solo 1.
 
 **1b.** Quale vantaggio ha un indice bitmap rispetto a un B-tree?
-- **A)** È più efficiente per le ricerche su intervalli
-- **B)** È più adatto a tabelle con molti aggiornamenti concorrenti
-- **C)** Funziona meglio su colonne con valori tutti diversi
-- **D)** Le condizioni su più colonne con pochi valori si risolvono con operazioni AND/OR bit a bit, in modo molto efficiente e compatto
+- **A)** È più efficiente del B-tree per le ricerche su intervalli di valori
+- **B)** Regge meglio del B-tree tabelle con molti aggiornamenti concorrenti
+- **C)** Funziona meglio del B-tree su colonne con valori tutti diversi tra loro
+- **D)** Combina condizioni su più colonne con AND/OR bit a bit, molto veloci
 
 > [!success]- Risposta
-> **D)** Es. "uomini anziani non sposati" = AND dei bitmap *Male*, *65+* e NOT *Married*. La B è falsa: gli aggiornamenti concorrenti sono proprio il punto debole del bitmap.
+> **D)** Es. "uomini anziani non sposati" = AND dei bitmap *Male*, *65+* e NOT *Married*; l'indice è anche molto compatto. La B è falsa: gli aggiornamenti concorrenti sono proprio il punto debole del bitmap.
 
 **1c.** Perché un indice bitmap non è adatto a una colonna che è chiave della tabella?
-- **A)** Perché le chiavi non possono essere indicizzate
-- **B)** Perché in una chiave tutti i valori sono distinti: servirebbe una colonna di bit per ogni tupla, cioè un indice di $n \times n$ bit, enorme e quasi tutto a zero
-- **C)** Perché le chiavi possono contenere valori nulli
-- **D)** Perché il bitmap funziona solo su colonne numeriche
+- **A)** Perché le colonne chiave non possono essere indicizzate in nessun modo
+- **B)** Perché servirebbe una colonna di bit per ogni tupla: indice enorme
+- **C)** Perché le colonne chiave possono contenere valori nulli in alcune tuple
+- **D)** Perché un indice bitmap funziona solo su colonne di tipo numerico intero
 
 > [!success]- Risposta
-> **B)** Il numero di colonne del bitmap è pari al numero di valori distinti. Per una chiave conviene un B+ tree (o un hash).
+> **B)** In una chiave tutti i valori sono distinti e il bitmap ha una colonna per ogni valore distinto: servirebbero $n \times n$ bit, quasi tutti a zero. Per una chiave conviene un B+ tree (o un hash).
 
 #### 2.
 *Testo originale: "Nella scrittura dei record su file system, un DBMS può usare un formato dei record fisso oppure auto-descrittivo. Spiegare cosa si intende per formato dei record fisso e auto-descrittivo, e discutere vantaggi e svantaggi di entrambi."*
 
-Quale affermazione è corretta?
-- **A)** Il formato fisso memorizza in ogni record nomi e tipi dei campi
-- **B)** Il formato auto-descrittivo è più compatto perché non ripete lo schema
-- **C)** Il formato fisso tiene lo schema nel direttorio e nei record solo i dati (compatto e veloce, ma rigido); il formato auto-descrittivo memorizza nei record anche i metadati (flessibile, ma più spazio ed elaborazione)
-- **D)** I due formati differiscono solo per l'ordine dei campi
+Quale affermazione sui formati dei record fisso e auto-descrittivo è corretta?
+- **A)** Il formato fisso memorizza in ogni record anche nomi e tipi dei campi
+- **B)** Il formato auto-descrittivo è più compatto, perché non ripete lo schema
+- **C)** Il fisso è compatto ma rigido; l'auto-descrittivo flessibile ma più pesante
+- **D)** I due formati differiscono soltanto per l'ordine in cui sono scritti i campi
 
 > [!success]- Risposta
-> **C)** A e B attribuiscono a un formato le caratteristiche dell'altro. È la stessa domanda dell'appello del 21/01/2021.
+> **C)** Il formato fisso tiene lo schema nel direttorio e nei record solo i dati; quello auto-descrittivo memorizza nei record anche i metadati, quindi occupa più spazio e richiede più elaborazione. A e B attribuiscono a un formato le caratteristiche dell'altro. È la stessa domanda dell'appello del 21/01/2021.
 
 #### 3.
 *Testo originale: "È sempre utile creare un indice su una colonna (o su più colonne) del DBMS? In quali casi in genere si ritiene utile indicizzare una colonna? Perché non avrebbe senso indicizzare una colonna di una tabella di cui si vuole normalmente recuperare tramite query più della metà delle righe?"*
 
 **3a.** È sempre utile creare un indice? In quali casi conviene?
-- **A)** Sì, conviene indicizzare tutte le colonne di tutte le tabelle
-- **B)** No: un indice occupa spazio e rallenta inserimenti e modifiche; conviene se si recupera spesso una piccola parte (meno del 15% circa) delle righe di una grande tabella, sulle colonne usate nei join e su colonne con valori relativamente univoci
-- **C)** No: gli indici servono solo per le chiavi primarie
-- **D)** Sì, perché gli indici non hanno costi
+- **A)** Sì: conviene sempre indicizzare tutte le colonne di tutte le tabelle
+- **B)** No: conviene se si recupera spesso una piccola parte delle righe
+- **C)** No: gli indici servono esclusivamente per le chiavi primarie
+- **D)** Sì: gli indici non occupano spazio e non rallentano le modifiche
 
 > [!success]- Risposta
-> **B)** Sono le linee guida viste a lezione. Chiavi primarie e campi `UNIQUE` hanno già un indice automatico; può essere utile aggiungerne sulle chiavi esterne.
+> **B)** Un indice occupa spazio e rallenta inserimenti e modifiche. Le linee guida viste a lezione: indicizzare se si recupera spesso meno del 15% circa delle righe di una grande tabella, sulle colonne usate nei join e su colonne con valori relativamente univoci. Chiavi primarie e campi `UNIQUE` hanno già un indice automatico; può essere utile aggiungerne sulle chiavi esterne.
 
 **3b.** Perché non ha senso indicizzare una colonna se le query recuperano di solito più della metà delle righe?
-- **A)** Perché l'indice restituirebbe risultati sbagliati
-- **B)** Perché il DBMS non permette indici su tabelle grandi
-- **C)** Perché le righe da leggere sono sparse in quasi tutti i blocchi: con l'indice si leggerebbero comunque quasi tutti i blocchi dei dati, più quelli dell'indice e in ordine sparso, mentre una scansione sequenziale legge ogni blocco una sola volta
-- **D)** Perché l'indice si cancella automaticamente
+- **A)** Perché l'indice restituirebbe risultati errati quando le righe sono tante
+- **B)** Perché il DBMS non permette indici su tabelle molto grandi
+- **C)** Perché si leggerebbero comunque quasi tutti i blocchi, più l'indice
+- **D)** Perché l'indice verrebbe cancellato automaticamente dal DBMS
 
 > [!success]- Risposta
-> **C)** Il costo si misura in blocchi letti: se quasi tutti i blocchi vanno letti, l'indice aggiunge solo accessi.
+> **C)** Le righe da leggere sono sparse in quasi tutti i blocchi: con l'indice si leggerebbero comunque quasi tutti i blocchi dei dati, più quelli dell'indice e in ordine sparso, mentre una scansione sequenziale legge ogni blocco una sola volta. Il costo si misura in blocchi letti.
 
 ---
 
@@ -642,26 +642,26 @@ Quale affermazione è corretta?
 #### 2.
 *Testo originale: "Quali sono le differenze tra 'relazione matematica' e 'relazione secondo il modello relazionale dei dati'?"*
 
-Qual è la differenza principale?
-- **A)** La relazione matematica è un insieme di tuple, quella del modello relazionale è una lista ordinata di righe
-- **B)** Nella relazione matematica i valori sono identificati dalla posizione nella tupla; nel modello relazionale ogni dominio ha un nome (attributo) che ne descrive il ruolo, quindi la struttura non è posizionale
-- **C)** Solo la relazione matematica può contenere valori nulli
-- **D)** Nel modello relazionale le tuple possono ripetersi
+Qual è la differenza principale tra relazione matematica e relazione del modello relazionale dei dati?
+- **A)** La matematica è un insieme di tuple, quella del modello è una lista ordinata
+- **B)** Nella matematica conta la posizione, nel modello ogni dominio ha un nome
+- **C)** Solo la relazione matematica può contenere valori nulli nelle sue tuple
+- **D)** Nel modello relazionale le tuple possono ripetersi, in quella matematica no
 
 > [!success]- Risposta
-> **B)** Sono entrambe insiemi di tuple distinte senza ordine tra le tuple (contro A e D). Nel modello relazionale, grazie ai nomi degli attributi, è irrilevante anche l'ordine delle colonne.
+> **B)** Sono entrambe insiemi di tuple distinte senza ordine tra le tuple (contro A e D). Nel modello relazionale ogni dominio ha un nome (attributo) che ne descrive il ruolo, quindi la struttura non è posizionale ed è irrilevante anche l'ordine delle colonne.
 
 #### 3.
 *Testo originale: "Cos'è il Buffer manager di un DBMS, e quali compiti svolge?"*
 
 **3a.** Che cos'è il buffer manager?
-- **A)** Il modulo che traduce le query SQL in algebra relazionale
-- **B)** Il modulo che gestisce un'area di memoria centrale condivisa tra le transazioni (il buffer), con lo scopo di ridurre gli accessi alla memoria secondaria
-- **C)** Il modulo che gestisce le autorizzazioni degli utenti
-- **D)** Il file in cui vengono registrate le operazioni per il ripristino dopo un guasto
+- **A)** Il modulo che traduce le query SQL in espressioni di algebra relazionale
+- **B)** Il modulo che gestisce il buffer in RAM per ridurre gli accessi al disco
+- **C)** Il modulo che controlla le autorizzazioni e i privilegi degli utenti
+- **D)** Il file su cui si registrano le operazioni per il ripristino dopo un guasto
 
 > [!success]- Risposta
-> **B)** Riceve le richieste di lettura e scrittura dei blocchi, usa il buffer quando possibile e accede al disco solo quando indispensabile. La D descrive il log.
+> **B)** Il buffer è un'area di memoria centrale condivisa tra le transazioni. Il buffer manager riceve le richieste di lettura e scrittura dei blocchi, usa il buffer quando possibile e accede al disco solo quando indispensabile. La D descrive il log.
 
 **3b.** Quale primitiva del buffer manager scrive una pagina su disco in modo **sincrono**?
 - **A)** `fix`
@@ -676,25 +676,25 @@ Qual è la differenza principale?
 *Testo originale: "Quale tipo di indice conviene creare su una colonna che viene spesso interrogata con delle range query (es. 'restituisci tutte le matricole da 1000 a 2000')? Motivare la risposta."*
 
 Quale indice conviene per le range query?
-- **A)** Un indice hash, perché costa circa 1 accesso
-- **B)** Un indice bitmap, perché la colonna ha molti valori
-- **C)** Un B+ tree, perché si trova la prima chiave dell'intervallo scendendo nell'albero e poi si scorrono le foglie collegate fino all'ultima
-- **D)** Nessun indice: le range query non possono usare indici
+- **A)** Un indice hash, perché ogni ricerca costa circa un solo accesso
+- **B)** Un indice bitmap, perché la colonna ha molti valori diversi
+- **C)** Un B+ tree, perché le foglie collegate si scorrono in ordine
+- **D)** Nessun indice, perché le range query non possono usare indici
 
 > [!success]- Risposta
-> **C)** L'hash (A) disperde valori vicini in blocchi diversi ed è adatto solo all'uguaglianza; il bitmap (B) è adatto a colonne con **pochi** valori distinti.
+> **C)** Si trova la prima chiave dell'intervallo scendendo nell'albero e poi si scorrono le foglie collegate fino all'ultima. L'hash (A) disperde valori vicini in blocchi diversi ed è adatto solo all'uguaglianza; il bitmap (B) è adatto a colonne con **pochi** valori distinti.
 
 #### 5.
 *Testo originale: "Quali algoritmi si possono usare per effettuare un join? Scegliere uno degli algoritmi trattati a lezione, spiegarlo brevemente e discuterne i pro e i contro rispetto agli altri algoritmi."*
 
 Quale descrizione degli algoritmi di join è corretta?
-- **A)** Nested-loop: per ogni tupla della tabella esterna si scandisce l'interna; sempre applicabile, ma costoso se l'interna è grande e non ha indici · Merge-join: richiede input ordinati sul campo di join, che vengono scanditi in parallelo una sola volta · Hash-join: si applica la stessa funzione hash alle due tabelle e si confrontano solo i bucket corrispondenti; vale solo per gli equi-join
-- **B)** Hash-join e merge-join funzionano con qualsiasi condizione, il nested-loop solo con l'uguaglianza
-- **C)** Il merge-join non richiede che gli input siano ordinati
+- **A)** Il nested-loop vale per ogni condizione; l'hash-join solo per l'uguaglianza
+- **B)** L'hash-join vale per ogni condizione; il nested-loop solo per l'uguaglianza
+- **C)** Il merge-join non richiede input ordinati e funziona con qualsiasi condizione
 - **D)** L'unico algoritmo di join è il prodotto cartesiano seguito da una selezione
 
 > [!success]- Risposta
-> **A)** Il nested-loop è l'unico dei tre applicabile a condizioni qualsiasi (contro B). Il merge-join richiede input ordinati o un B+ tree sul campo di join (contro C). L'ottimizzatore sceglie tra questi algoritmi stimando il costo dei piani alternativi.
+> **A)** **Nested-loop**: per ogni tupla della tabella esterna si scandisce l'interna; sempre applicabile, ma costoso se l'interna è grande e non ha indici. **Merge-join**: richiede input ordinati sul campo di join (o un B+ tree), scanditi in parallelo una sola volta. **Hash-join**: la stessa funzione hash sulle due tabelle, poi si confrontano solo i bucket corrispondenti; vale solo per gli equi-join. L'ottimizzatore sceglie tra questi algoritmi stimando il costo dei piani alternativi.
 
 ### Algebra relazionale
 
