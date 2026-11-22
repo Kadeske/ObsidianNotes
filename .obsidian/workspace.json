@@ -13,15 +13,58 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md",
+                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "11 - Udito, Tatto e Movimento"
+            }
+          },
+          {
+            "id": "494c1e80e20a5f00",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "09 - La componente umana - Percezione visiva"
+              "title": "13 - Pensiero, ragionamento e metafore"
+            }
+          },
+          {
+            "id": "d30ff593f6b36d0e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IUM/TEORIA/Parziale 1/03 - Definizioni e Terminologia.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03 - Definizioni e Terminologia"
+            }
+          },
+          {
+            "id": "ad216b9cb320ba75",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "05 - Requisiti e Personas"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -219,7 +262,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 569.39453125
+    "width": 464.01171875
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -235,32 +278,32 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "ed210cb97aaf6758",
+  "active": "d30ff593f6b36d0e",
   "lastOpenFiles": [
-    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md",
-    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md.tmp.4489.b3f04478896e",
-    "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
-    "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md.tmp.4489.c2f491a43001",
+    "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md",
+    "IUM/TEORIA/Parziale 1/01 - Introduzione al corso.md",
     "IUM/TEORIA/Parziale 1/12 - Memoria.md",
-    "IUM/TEORIA/Parziale 1/12 - Memoria.md.tmp.4489.08a458a658ff",
-    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.4489.65a3897a3eeb",
+    "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
     "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
-    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md",
-    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md.tmp.4489.c200deb91f42",
-    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
     "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md",
-    "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md.tmp.4489.b4e4137077e4",
     "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
     "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md",
-    "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md.tmp.4489.5dabb85445c2",
-    "IUM/TEORIA/Parziale 1/04 - Interaction Design.md",
-    "IUM/TEORIA/Parziale 1/01 - Introduzione al corso.md",
     "IUM/TEORIA/Parziale 1/06 - Scenari.md",
-    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md.tmp.4489.b0863bc7989f",
+    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
+    "IUM/TEORIA/Parziale 1/04 - Interaction Design.md",
     "IUM/TEORIA/Parziale 1/03 - Definizioni e Terminologia.md",
+    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md",
+    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md.tmp.4489.b3f04478896e",
+    "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md.tmp.4489.c2f491a43001",
+    "IUM/TEORIA/Parziale 1/12 - Memoria.md.tmp.4489.08a458a658ff",
+    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.4489.65a3897a3eeb",
+    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md",
+    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md.tmp.4489.c200deb91f42",
+    "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md.tmp.4489.b4e4137077e4",
+    "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md.tmp.4489.5dabb85445c2",
+    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md.tmp.4489.b0863bc7989f",
     "IUM/TEORIA/Parziale 1/03 - Definizioni e Terminologia.md.tmp.4489.060b41260cb6",
     "IUM/TEORIA/Link-Slide-Teoria.md",
-    "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md",
     "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md.tmp.4489.0eaf46743749",
     "IUM/TEORIA/Parziale 1/img/ium_p13_s22.jpg",
     "IUM/TEORIA/Parziale 1/img/ium_p12_s12.jpg",
