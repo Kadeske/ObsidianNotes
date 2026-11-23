@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Riassunto complessivo"
+              "title": "11 - Udito, Tatto e Movimento"
             }
           },
           {
@@ -142,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -161,7 +161,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -204,7 +204,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -279,10 +279,13 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "d30ff593f6b36d0e",
+  "active": "6b667f002aad471e",
   "lastOpenFiles": [
-    "IUM/TEORIA/Parziale 1/04 - Interaction Design.md",
+    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.136394.6ce878144cb5",
+    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md",
+    "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md",
     "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+    "IUM/TEORIA/Parziale 1/04 - Interaction Design.md",
     "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
     "IUM/TEORIA/Parziale 1/03 - Definizioni e Terminologia.md",
     "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md",
@@ -290,7 +293,6 @@
     "IUM/TEORIA/Parziale 1/12 - Memoria.md",
     "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
     "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
-    "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md",
     "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
     "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md",
     "IUM/TEORIA/Parziale 1/06 - Scenari.md",
@@ -299,7 +301,6 @@
     "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md.tmp.4489.c2f491a43001",
     "IUM/TEORIA/Parziale 1/12 - Memoria.md.tmp.4489.08a458a658ff",
     "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.4489.65a3897a3eeb",
-    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md",
     "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md.tmp.4489.c200deb91f42",
     "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md.tmp.4489.b4e4137077e4",
     "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md.tmp.4489.5dabb85445c2",
@@ -325,7 +326,6 @@
     "DB/TEORIA/Esami_passati_DB.md",
     "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
     "DB/TEORIA/Schema concettuale, logico ed esterno.md",
-    "DB/TEORIA/03 - Algebra relazionale.md",
-    "DB/TEORIA/Quiz_DB.md"
+    "DB/TEORIA/03 - Algebra relazionale.md"
   ]
 }

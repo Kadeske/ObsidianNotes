@@ -57,9 +57,12 @@ tags: [IUM, teoria, parziale1, componente-umana, udito, tatto, fitts]
   - alcune **aree** sono più sensibili di altre (es. polpastrelli, labbra);
   - la sensibilità dipende dal loro **uso**.
 - Gli stimoli tattili sono ricevuti da **recettori nervosi della pelle**:
-  - **Termocettori**: sensibili alla **temperatura**;
-  - **Nocicettori** (nelle slide "chemiocettori"): sensibili a **pressione, calore e dolore intensi**;
-  - **Meccanocettori**: sensibili alla **pressione**.
+  - **Termocettori**: sensibili alla **temperatura** nell'intervallo normale (caldo/freddo **non dolorosi**);
+  - **Nocicettori** (nelle slide "chemiocettori"): sensibili a stimoli **intensi, potenzialmente dannosi** → pressione, calore (o freddo) e dolore **intensi**;
+  - **Meccanocettori**: sensibili alla **pressione** (normale: contatto, vibrazione).
+
+> [!note] Termocettori vs nocicettori
+> La differenza non è il *tipo* di stimolo ma l'**intensità**: un caffè tiepido attiva i termocettori ("è caldo"); una pentola rovente attiva anche i nocicettori ("mi brucio" → dolore). Lo stesso vale per la pressione: una carezza attiva i meccanocettori, un pizzicotto forte i nocicettori.
 
 - Può essere un senso **fondamentale per chi ha disabilità visive** (es. Braille, feedback vibrotattile).
 - **Cinestesia**: consapevolezza della **posizione** (e del moto) del proprio corpo e degli arti.

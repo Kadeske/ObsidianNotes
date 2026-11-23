@@ -158,11 +158,11 @@ Esempio: software di montaggio video → bassa apprendibilità, alta efficienza;
 
 Nello UCD i requisiti sono **aspettative, necessità e vincoli degli utenti finali**. Servono a: orientare il design all'utente, **ridurre i rischi** (malintesi, sviluppi sbagliati), fare da **base** per le decisioni. È la fase in cui i progetti **falliscono più spesso** (vignetta dell'altalena: ogni passaggio di comunicazione distorce ciò che serviva davvero).
 
-||Tradizionali|UCD|
-|---|---|---|
-|Cosa|specifiche tecniche/funzionali|aspettative e bisogni degli utenti|
-|Focus|sistema, performance, architettura|esperienza, usabilità, soddisfazione|
-|Esempi|carico, tempi di risposta, compatibilità|facilità d'uso, accessibilità|
+| Tradizionali | UCD                                      |                                      |
+| ------------ | ---------------------------------------- | ------------------------------------ |
+| Cosa         | specifiche tecniche/funzionali           | aspettative e bisogni degli utenti   |
+| Focus        | sistema, performance, architettura       | esperienza, usabilità, soddisfazione |
+| Esempi       | carico, tempi di risposta, compatibilità | facilità d'uso, accessibilità        |
 
 I requisiti UCD **arricchiscono** quelli tradizionali e possono **evolvere** durante lo sviluppo.
 
@@ -287,12 +287,12 @@ Esempio Thomson (vacanza in barca a vela): ne derivano requisiti come uso **coll
 - Materiali **attesi nel prodotto finale**, molto simile alla versione finale, linguaggio vero o Figma.
 - ⚠️ Gli utenti (e i committenti) pensano che sia un **sistema completo/quasi finito**; feedback sui dettagli estetici; ci si affeziona.
 
-||Bassa|Alta|
-|---|---|---|
-|Costo/tempo|basso|alto|
-|Modificabilità|altissima|bassa|
-|Fase|iniziale, esplorazione|avanzata, raffinamento|
-|Feedback|concetti e flusso|dettagli, look & feel|
+|                | Bassa                  | Alta                   |
+| -------------- | ---------------------- | ---------------------- |
+| Costo/tempo    | basso                  | alto                   |
+| Modificabilità | altissima              | bassa                  |
+| Fase           | iniziale, esplorazione | avanzata, raffinamento |
+| Feedback       | concetti e flusso      | dettagli, look & feel  |
 
 ### Compromessi: orizzontale vs verticale
 
@@ -355,13 +355,13 @@ Modello (Dix): l'uomo come **sistema di elaborazione dell'informazione**: **inpu
 
 ### Coni e bastoncelli
 
-||Bastoncelli|Coni|
-|---|---|---|
-|Sensibili a|**luminosità**|**lunghezza d'onda = colore**|
-|Dove|**periferia** della retina|**fovea**|
-|Sensibilità|altissima, si saturano → **visione al buio**|serve più luce|
-|Risoluzione|bassa|alta|
-|Ruolo|**movimento**, visione periferica|dettagli, colori|
+|             | Bastoncelli                                  | Coni                          |
+| ----------- | -------------------------------------------- | ----------------------------- |
+| Sensibili a | **luminosità**                               | **lunghezza d'onda = colore** |
+| Dove        | **periferia** della retina                   | **fovea**                     |
+| Sensibilità | altissima, si saturano → **visione al buio** | serve più luce                |
+| Risoluzione | bassa                                        | alta                          |
+| Ruolo       | **movimento**, visione periferica            | dettagli, colori              |
 
 - **Tre tipi di coni**: **blu** (onde corte) : **verde** (medie) : **rosso** (lunghe) = **1 : 2 : 4**.
 - ⇒ il **rosso attira l'attenzione**; il **blu va bene per gli sfondi** (pochi coni blu, quasi nessuno nella fovea → male per testo e dettagli).
@@ -521,7 +521,7 @@ $$Mt = a + b \log_2\left(\frac{D}{W} + 1\right)$$
 
 **Modello modale (Atkinson & Shiffrin)**: **Stimoli → Memoria sensoriale —(attenzione)→ STM —(ripasso/rehearsal)→ LTM** (e dalla LTM si recupera verso la STM).
 
-||Durata|Capacità|Accesso / decadimento|
+| |Durata|Capacità|Accesso / decadimento|
 |---|---|---|---|
 |**Sensoriale**|200–500 ms|limitatissima|rapidissimo|
 |**STM**|secondi → 1 minuto|**7 ± 2 chunk**|accesso ~70 ms, decadimento ~200 ms|
