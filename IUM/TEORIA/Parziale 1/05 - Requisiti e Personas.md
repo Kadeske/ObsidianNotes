@@ -182,6 +182,84 @@ Tre strumenti collegati:
 > [!example] Esercizio 3 – Personas con ChatGPT
 > Ripetere l'esercizio scrivendo un prompt che riassuma le informazioni necessarie per creare una persona. Confrontare il risultato: quanto è plausibile? *(Tipicamente le personas generate sono plausibili ma generiche e stereotipate, perché non derivano da dati reali sugli utenti: violano la regola "basate su dati, non su desideri".)*
 
+## Altri esempi di costruzione di personas
+
+> [!info] Questi esempi non sono nelle slide: li ho aggiunti per esercitarsi. Seguono la struttura vista sopra (*Cosa inserire*) e mostrano anche **come** si arriva alla persona partendo dai dati.
+
+### Esempio A – Dai dati alla persona (app di una biblioteca comunale)
+
+**1. Dati di user research** (ipotetici, raccolti con questionari, osservazione al banco prestiti e interviste):
+- il 60% degli utenti che prenotano libri ha più di 55 anni;
+- molti chiedono al bibliotecario di prolungare il prestito per telefono;
+- nelle interviste emergono difficoltà a leggere testi piccoli sullo smartphone e la paura di "sbagliare qualcosa" online;
+- quasi tutti usano WhatsApp ogni giorno, pochi usano altre app.
+
+**2. Sintesi in una persona**
+
+| Campo | Contenuto |
+| --- | --- |
+| **Nome, età, foto** | Franco Pinna, 67 anni (foto di un uomo sorridente con gli occhiali) |
+| **Etichetta** | "Il lettore fedele" – insegnante in pensione |
+| **Esperienza nel dominio** | Frequenta la biblioteca da 30 anni, conosce bene il catalogo cartaceo; usa lo smartphone solo per WhatsApp e le foto dei nipoti |
+| **Contesto d'uso** | Uso **volontario**, da smartphone, a casa, circa una volta a settimana |
+| **Obiettivi** | Prenotare i libri in arrivo prima che finiscano; rinnovare i prestiti senza andare in biblioteca |
+| **Problemi / frustrazioni** | Testi piccoli, pulsanti ravvicinati, paura di prenotare per sbaglio; le password lunghe da ricordare |
+| **Frase** | "Mi piace la tecnologia, basta che non mi faccia sentire stupido." |
+
+**3. Implicazioni di design**: testo grande e ridimensionabile; pulsanti grandi e distanziati (legge di Fitts, [[11 - Udito, Tatto e Movimento]]); conferma prima di ogni prenotazione e possibilità di annullare; accesso con codice della tessera invece di una password complessa; promemoria di scadenza del prestito.
+
+### Esempio B – Più personas per la stessa app (orario delle lezioni)
+
+Di solito si sviluppano **diverse personas**, perché persone diverse hanno **obiettivi diversi** anche usando lo stesso prodotto. Oltre a Giulia (la pendolare, vedi *Esercizio 2*):
+
+> [!example] Marco Deiana, 27 anni – "Lo studente lavoratore"
+> - Iscritto part-time a Economia, lavora come commesso in un negozio con turni che cambiano ogni settimana.
+> - **Esperienza**: buona con lo smartphone, usa Google Calendar per i turni di lavoro.
+> - **Contesto**: consulta l'app la domenica sera per organizzare la settimana; non segue tutte le lezioni.
+> - **Obiettivi**: capire quali lezioni sono compatibili con i turni; sapere dove trovare le registrazioni di quelle che perde.
+> - **Frustrazioni**: dover copiare a mano gli orari nel suo calendario; non sapere se una lezione verrà registrata.
+> - **Frase**: "Non posso esserci sempre, ma non voglio restare indietro."
+> - → *Implicazioni*: **esportazione** dell'orario su Google Calendar; filtro "solo i miei corsi"; indicazione del link alla registrazione accanto a ogni lezione.
+
+> [!example] Prof.ssa Anna Melis, 52 anni – "La docente con poco tempo"
+> - Docente di Analisi, tiene tre corsi in due sedi diverse.
+> - **Esperienza**: usa il computer ogni giorno per lavoro, ma considera le app "una perdita di tempo".
+> - **Contesto**: usa il sistema **per obbligo** (non per scelta), da PC in ufficio, quando deve spostare una lezione.
+> - **Obiettivi**: comunicare in fretta un cambio d'aula o un annullamento a tutti gli studenti del corso.
+> - **Frustrazioni**: dover avvisare su tre canali diversi (e-learning, email, Teams); studenti che non leggono gli avvisi.
+> - **Frase**: "Se devo spostare una lezione, voglio farlo in un minuto e sapere che tutti l'hanno saputo."
+> - → *Implicazioni*: funzione "sposta/annulla lezione" con **notifica automatica** a tutti gli iscritti; template di messaggio già pronto.
+
+Notare che Giulia, Marco e Anna portano a **funzionalità diverse**: notifiche push (Giulia), esportazione del calendario (Marco), pubblicazione rapida degli avvisi (Anna). Senza personas si rischierebbe di progettare per un "utente generico" che non esiste.
+
+### Esempio C – Persona fatta male vs persona fatta bene
+
+❌ **Persona da evitare**
+> *Luca, 25 anni, ama la tecnologia e trova l'app intuitiva e bellissima. Vuole un'app veloce e moderna. È simpaticissimo, il suo motto è "pizza e codice" 🍕💻.*
+
+Problemi:
+- è **idealizzata**: descrive l'utente che vorremmo, non quello reale ("trova l'app intuitiva");
+- usa aggettivi di "fuffa" (*veloce, moderna, intuitiva*, vedi [[03 - Definizioni e Terminologia]]);
+- **non ci sono obiettivi né problemi** concreti → non aiuta a prendere decisioni di design;
+- troppe battute: diventa divertente ma inutile;
+- non dice **nulla sul contesto d'uso** (dove, quando, con quale dispositivo, per scelta o per obbligo).
+
+✅ **Persona corretta (stesso target)**
+> *Luca Sanna, 25 anni, sviluppatore junior in una startup di Cagliari. Usa ogni giorno strumenti come GitHub e Slack e si aspetta scorciatoie da tastiera e notifiche configurabili. Usa l'app di gestione progetti per lavoro (non per scelta), da desktop, molte volte al giorno. Obiettivo: vedere in un colpo d'occhio i task assegnati a lui e aggiornarne lo stato senza aprire mille finestre. Frustrazione: le notifiche per ogni minima modifica che gli fanno perdere la concentrazione. "Voglio sapere cosa devo fare oggi, non tutto quello che succede nel team."*
+
+È un **utente esperto e frequente** → ha bisogno di flessibilità, accesso rapido alle funzioni e *short-cuts* (vedi *Le caratteristiche dell'utente*).
+
+### Checklist per verificare una persona
+
+- [ ] Ha **nome, età, genere, foto** e un'**etichetta**?
+- [ ] È basata su **dati** di user research e non su desideri?
+- [ ] Indica il **livello di esperienza** nel dominio?
+- [ ] Descrive il **contesto d'uso** (dispositivo, frequenza, scelta/obbligo)?
+- [ ] Ha **obiettivi** e **problemi** concreti legati al prodotto?
+- [ ] Ha una **frase** che riassume l'atteggiamento?
+- [ ] È **realistica** (non idealizzata) e senza troppe battute?
+- [ ] Da essa si possono ricavare **implicazioni di design**?
+
 ## Riferimenti
 - Dix, Finlay, Abowd, Beale – *Interazione Uomo Macchina*, cap. 5
 - Rogers, Sharp, Preece – *Interaction Design*, cap. 9-10-11

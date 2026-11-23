@@ -128,7 +128,7 @@ Ogni voce di menu ha un'**etichetta breve** + una **descrizione** che chiarisce 
 - Contact, **Contact Us**
 - Help, **FAQ**, Frequently Asked Questions
 - **News**, News & Events, News & Announcements, Announcements
-- About, **About Us**, About <company name>, Who We Are
+- About, **About Us**, About `<nome azienda>`, Who We Are
 
 > Usare le etichette convenzionali riduce il carico cognitivo: l'utente le riconosce senza doverle interpretare.
 
