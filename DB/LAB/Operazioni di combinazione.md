@@ -1,174 +1,230 @@
-Ecco il riassunto schematico delle Lezioni 4-5 relative alle operazioni di combinazione di tabelle e ai vari tipi di Join in SQL.
+Schema di riferimento:
+- `studenti(matricola, cognome, nome, citta_residenza, anno)`
+- `corsi(codice, nome, docente)`
+- `esami(studente, corso, data, voto)`, con FK `studente → studenti`, `corso → corsi`
+- `impiegati(matricola, nome, cognome, mansione, stipendio, cod_dip)`, `dipartimenti(cod_dip, nome_dip, direttore)`
 
-### 1. Prodotto Cartesiano
+### 1. Prodotto cartesiano
 
-Combina in tutti i modi possibili ogni tupla della prima tabella con ogni tupla della seconda tabella ($T_1 \times T_2$).
-
-- **Sintassi implicita**: elencare le tabelle separate da virgola nella clausola `FROM`:
-
-``` sql
-SELECT *
-FROM T1, T2;
-```
-
-- **Sintassi esplicita**: utilizzo della clausola `CROSS JOIN`:
-
+Combina **ogni** riga di `T1` con **ogni** riga di `T2` ($T_1 \times T_2$): se `T1` ha $n$ righe e `T2` ne ha $m$, il risultato ha $n \cdot m$ righe e tutte le colonne di entrambe.
 
 ``` sql
-SELECT *
-FROM T1 CROSS JOIN T2;
+SELECT * FROM t1, t2;              -- sintassi implicita
+SELECT * FROM t1 CROSS JOIN t2;    -- sintassi esplicita
 ```
 
-- Ha senso pratico solo se seguito da condizioni di selezione per correlare i record (trasformandosi in un _theta-join_).
-### 2. Operazioni di Join (Theta-Join ed Equi-Join)
+Da solo ha poco senso: diventa utile con una condizione che collega le righe (**theta-join**, $\bowtie_{\text{cond}}$). Se la condizione è un'uguaglianza si parla di **equi-join**.
 
-Permettono di correlare i dati di due o più tabelle in base a una condizione logica (generalmente l'uguaglianza tra chiave primaria e foreign key).
+### 2. Join
 
-#### Sintassi Implicita (nel `WHERE`)
-
-Le tabelle sono separate da virgole nel `FROM` e la condizione di correlazione è specificata nel `WHERE`:
+#### Sintassi implicita (condizione nel `WHERE`)
 
 ``` sql
-SELECT Studenti.Cognome, Studenti.Nome
-FROM Studenti, Esami
-WHERE Studenti.Matricola = Esami.Studente
-  AND Esami.Corso = 'C3';
+-- Cognome e nome degli studenti che hanno sostenuto l'esame del corso C3
+SELECT s.cognome, s.nome
+FROM studenti s, esami e
+WHERE s.matricola = e.studente     -- condizione di join
+  AND e.corso = 'C3';              -- condizione di selezione
 ```
 
-  
-#### Sintassi Esplicita (nel `FROM` con clausola `ON`)
-
-Consente di separare chiaramente la condizione di accoppiamento delle tabelle (`ON`) dalle condizioni di filtro sulle singole righe (`WHERE`):
+#### Sintassi esplicita (`JOIN ... ON`)
 
 ``` sql
-SELECT Studenti.Cognome, Studenti.Nome
-FROM Studenti 
-JOIN Esami ON Studenti.Matricola = Esami.Studente
-WHERE Esami.Corso = 'C3';
+SELECT s.cognome, s.nome
+FROM studenti s JOIN esami e ON s.matricola = e.studente
+WHERE e.corso = 'C3';
 ```
 
-#### Self Join (Join di una tabella con se stessa)
-
-Richiede obbligatoriamente l'uso di **alias** distinti per fare riferimento alla stessa relazione:
+Separa la condizione di **join** (`ON`) dai **filtri** sulle righe (`WHERE`). Con l'`INNER JOIN` spostare un filtro tra `ON` e `WHERE` non cambia il risultato; con gli **outer join sì** (§7).
 
 ``` sql
-SELECT S1.Matricola, S2.Matricola
-FROM Studenti S1 
-JOIN Studenti S2 ON S1.CittàResid = S2.CittàResid 
-                AND S1.Matricola > S2.Matricola;
+-- Matricola degli studenti che hanno sostenuto Geometria
+SELECT e.studente
+FROM esami e JOIN corsi c ON e.corso = c.codice
+WHERE c.nome = 'Geometria';
 ```
 
-### 3. Join Interni ed Esterni (`INNER` vs `OUTER`)
+#### Self join (una tabella con se stessa)
 
-La sintassi generale per distinguere le modalità è:
+Servono **alias diversi** per le due "copie":
 
 ``` sql
-Tabella1 [INNER | LEFT | RIGHT | FULL] JOIN Tabella2 ON Condizione
+-- Coppie di studenti residenti nella stessa città
+SELECT s1.matricola, s2.matricola
+FROM studenti s1 JOIN studenti s2
+  ON s1.citta_residenza = s2.citta_residenza
+ AND s1.matricola < s2.matricola;
 ```
 
-- **`INNER JOIN` (Default)**:    
-    - Restituisce solo le tuple che trovano corrispondenza in entrambe le tabelle secondo la condizione specificata nel predicato `ON`. Le righe senza corrispondenza vengono scartate.
-    - La parola chiave `INNER` è opzionale (scrivere `JOIN` equivale a scrivere `INNER JOIN`).
-- **`LEFT [OUTER] JOIN`**:
-    - Mantiene **tutte** le tuple della tabella di sinistra (`Tabella1`).
-    - Se una tupla non trova riscontro nella tabella di destra, gli attributi di quest'ultima vengono estesi con valori `NULL`.    
-- **`RIGHT [OUTER] JOIN`**:
-    - Mantiene **tutte** le tuple della tabella di destra (`Tabella2`), estendendo con `NULL` le colonne della tabella di sinistra qualora manchi una corrispondenza.
-- **`FULL [OUTER] JOIN`**:
-    - Mantiene **tutte** le tuple di entrambe le tabelle, estendendo con `NULL` i valori mancanti da ambo i lati.
+| Seconda condizione | Effetto |
+| --- | --- |
+| nessuna | compaiono anche le coppie (A, A) |
+| `s1.matricola <> s2.matricola` (slide) | ogni coppia compare **due volte**: (A, B) e (B, A) |
+| `s1.matricola < s2.matricola` | ogni coppia compare **una sola volta** |
 
-### 4. Join Multipli (Più di due tabelle)
-
-È possibile concatenare più operazioni di join nella stessa query, collegando entità collegate a cascata.
-
-- **Sintassi implicita**:
+### 3. Join interni ed esterni
 
 ``` sql
-SELECT Studenti.Matricola, Studenti.Cognome
-FROM Studenti, Esami, Corsi
-WHERE Studenti.Matricola = Esami.Studente 
-  AND Esami.Corso = Corsi.Codice
-  AND Corsi.Nome = 'Analisi';
+T1 [INNER | LEFT [OUTER] | RIGHT [OUTER] | FULL [OUTER]] JOIN T2 ON condizione
 ```
 
-- **Sintassi esplicita**:
+| Tipo | Mantiene | Righe senza corrispondenza |
+| --- | --- | --- |
+| `[INNER] JOIN` (default) | solo le righe che hanno corrispondenza | scartate |
+| `LEFT JOIN` | **tutte** le righe di `T1` (sinistra) | colonne di `T2` a `NULL` |
+| `RIGHT JOIN` | **tutte** le righe di `T2` (destra) | colonne di `T1` a `NULL` |
+| `FULL JOIN` | tutte le righe di entrambe | `NULL` dal lato mancante |
+
+`T1 RIGHT JOIN T2` ≡ `T2 LEFT JOIN T1` (cambia solo l'ordine delle colonne).
+
+**Esempio** (dalle slide):
+
+| T1.A | T1.B |
+| --- | --- |
+| a | 1 |
+| b | 2 |
+| e | 4 |
+
+| T2.B | T2.C |
+| --- | --- |
+| 1 | x |
+| 4 | v |
+| 5 | z |
+
+| Join su `T1.B = T2.B` | Risultato (A, T1.B, T2.B, C) |
+| --- | --- |
+| `INNER` | (a, 1, 1, x), (e, 4, 4, v) |
+| `LEFT` | + (b, 2, NULL, NULL) |
+| `RIGHT` | + (NULL, NULL, 5, z) |
+| `FULL` | + (b, 2, NULL, NULL) + (NULL, NULL, 5, z) |
 
 ``` sql
-SELECT Studenti.Matricola, Studenti.Cognome
-FROM Studenti 
-JOIN Esami ON Studenti.Matricola = Esami.Studente
-JOIN Corsi ON Esami.Corso = Corsi.Codice
-WHERE Corsi.Nome = 'Analisi';
+-- Tutti gli studenti con i relativi esami, inclusi quelli che non hanno sostenuto esami
+SELECT s.matricola, e.corso
+FROM studenti s LEFT JOIN esami e ON s.matricola = e.studente;
 ```
 
-### 5. Forme Alternative di Join (`NATURAL JOIN` e `USING`)
+### 4. Join multipli
 
-Sintassi compatte che semplificano la condizione di join quando le tabelle condividono attributi con lo stesso nome.
-
-- **`NATURAL JOIN`**:
-    - Esegue automaticamente l'equi-join confrontando tutti gli attributi che hanno lo **stesso identico nome** nelle due tabelle.
-    - Nel risultato le colonne duplicate compaiono una sola volta.
-    ``` sql
-    SELECT NomeDip 
-    FROM Impiegati NATURAL JOIN Dipartimenti
-    WHERE Nome = 'Mario' AND Cognome = 'Rossi';
-    ```
- 
-- **Clausola `USING (...)`**:
-    
-      
-    
-    - Si specifica esplicitamente su quale insieme di attributi omonimi effettuare il confronto di uguaglianza.
- 
-	``` sql
-    SELECT NomeDip 
-    FROM Impiegati JOIN Dipartimenti USING (CodiceDip)
-    WHERE Nome = 'Mario' AND Cognome = 'Rossi';
-    ```
-- **Varianti con `OUTER`**: 
-    - Sia il `NATURAL JOIN` sia la clausola `USING` ammettono le varianti esterne (es. `NATURAL LEFT JOIN`, `NATURAL RIGHT JOIN`, `NATURAL FULL JOIN`).
-
-## Esempi
-
-
-- `Studenti(matricola, cognome, nome, citta_residenza, anno)`
-- `Corsi(codice, nome, docente)`
-- `Esami(studente, corso, data, voto)`
-
-### 1. Esempio di Join Multipli (3 tabelle)
-
-Un **join multiplo** collega tra loro più di due tabelle collegando le chiavi corrispondenti in catena.
-
-**Obiettivo:** Trovare il cognome dello studente, il nome del corso e il voto per tutti gli esami superati con voto almeno pari a 28.
+Ogni join ha la propria condizione. Con $n$ tabelle servono (almeno) $n-1$ condizioni di join, altrimenti si ottiene un prodotto cartesiano.
 
 ``` sql
-SELECT s.cognome, c.nome AS nome_corso, e.voto
-FROM segreteria.studenti AS s
-JOIN segreteria.esami AS e 
-    ON s.matricola = e.studente
-JOIN segreteria.corsi AS c 
-    ON e.corso = c.codice
-WHERE e.voto >= 28;
+-- Matricola e cognome degli studenti che hanno sostenuto Analisi
+SELECT s.matricola, s.cognome                       -- implicita
+FROM studenti s, esami e, corsi c
+WHERE s.matricola = e.studente AND e.corso = c.codice
+  AND c.nome = 'Analisi';
+
+SELECT s.matricola, s.cognome                       -- esplicita
+FROM studenti s
+JOIN esami e ON s.matricola = e.studente
+JOIN corsi c ON e.corso = c.codice
+WHERE c.nome = 'Analisi';
+
+-- Per ogni esame con voto > 24: cognome dello studente e docente del corso
+SELECT s.cognome, c.docente
+FROM studenti s
+JOIN esami e ON s.matricola = e.studente
+JOIN corsi c ON e.corso = c.codice
+WHERE e.voto > 24;
+
+-- Matricole degli studenti che hanno sostenuto almeno un esame sostenuto da Mario Rossi
+SELECT DISTINCT e1.studente
+FROM esami e1
+JOIN esami e2 ON e1.corso = e2.corso                 -- stessa tabella due volte
+JOIN studenti s ON e2.studente = s.matricola
+WHERE s.nome = 'Mario' AND s.cognome = 'Rossi';
 ```
 
-- **Primo join (`studenti` con `esami`):** collega lo studente al suo esame tramite `s.matricola = e.studente`. 
-- **Secondo join (con `corsi`):** risale al nome del corso tramite `e.corso = c.codice`. 
-- **`WHERE`:** filtra solo le righe che soddisfano la condizione sul voto. 
+Nell'ultimo esempio compare anche Mario Rossi stesso: per escluderlo aggiungere `AND e1.studente <> e2.studente`.
 
-### 2. Esempio di Query Annidata (Subquery)
-
-Una **query annidata** (o sotto-interrogazione) è un'istruzione `SELECT` posta all'interno di un'altra query principale (spesso nella clausola `WHERE` con operatori come `IN`, `NOT IN`, `EXISTS`, ecc.).
-
-**Obiettivo:** Trovare la matricola, il cognome e il nome degli studenti che **non** hanno sostenuto alcun esame.
+### 5. `NATURAL JOIN` e `USING`
 
 ``` sql
-SELECT matricola, cognome, nome
-FROM segreteria.studenti
-WHERE matricola NOT IN (
-    SELECT studente
-    FROM segreteria.esami
-);
+T1 NATURAL JOIN T2            -- uguaglianza su TUTTE le colonne con lo stesso nome
+T1 JOIN T2 USING (col1, ...)  -- uguaglianza solo sulle colonne indicate (stesso nome in entrambe)
 ```
 
-- **Subquery interna:** restituisce l'elenco di tutte le matricole presenti nella tabella `esami` (cioè chi ha fatto almeno un esame).
-- **Query esterna:** seleziona gli studenti la cui matricola **non compare** in quell'elenco (`NOT IN`).
+``` sql
+-- Nome del dipartimento in cui lavora Mario Rossi
+SELECT nome_dip FROM impiegati NATURAL JOIN dipartimenti
+WHERE nome = 'Mario' AND cognome = 'Rossi';
+
+SELECT nome_dip FROM impiegati JOIN dipartimenti USING (cod_dip)
+WHERE nome = 'Mario' AND cognome = 'Rossi';
+```
+
+- Le colonne di join compaiono **una sola volta** nel risultato e si scrivono **senza prefisso** (`cod_dip`, non `impiegati.cod_dip`).
+- Esistono anche le varianti esterne: `NATURAL LEFT JOIN`, `LEFT JOIN ... USING (...)`, ecc.
+- In un `FULL JOIN ... USING (b)` la colonna `b` del risultato prende il valore da **quella delle due tabelle che non è `NULL`**.
+
+### 6. Duplicati nei join
+
+Un join restituisce una riga per **ogni coppia** che soddisfa la condizione: uno studente con 5 esami compare 5 volte in `studenti JOIN esami`. Se la traccia chiede *studenti* (non esami) → `SELECT DISTINCT` oppure `IN`/`EXISTS` ([[Query nidificate]]).
+
+### 7. Casi limite
+
+#### a. Filtro sulla tabella destra di un `LEFT JOIN`
+
+``` sql
+-- Studenti con i loro esami da almeno 28, mostrando anche chi non ne ha
+SELECT s.matricola, e.corso
+FROM studenti s LEFT JOIN esami e ON s.matricola = e.studente AND e.voto >= 28;   -- CORRETTO
+
+SELECT s.matricola, e.corso
+FROM studenti s LEFT JOIN esami e ON s.matricola = e.studente
+WHERE e.voto >= 28;   -- SBAGLIATO: le righe con e.voto NULL vengono scartate → diventa un INNER JOIN
+```
+
+#### b. Filtro sulla tabella sinistra dentro l'`ON`
+
+``` sql
+SELECT * FROM t1 LEFT JOIN t2 ON t1.b = t2.b AND t1.a = 'a';
+```
+
+**Non** filtra `T1`: tutte le righe di `T1` restano, solo che quelle con `a <> 'a'` non si abbinano a nulla (colonne di `T2` a `NULL`). Per filtrare la tabella di sinistra, la condizione va nel `WHERE`.
+
+#### c. Anti-join: righe **senza** corrispondenza
+
+``` sql
+-- Studenti che non hanno sostenuto esami
+SELECT s.*
+FROM studenti s LEFT JOIN esami e ON s.matricola = e.studente
+WHERE e.studente IS NULL;      -- testare una colonna di T2 che non può essere NULL (es. la chiave)
+```
+
+#### d. Outer join seguito da inner join
+
+`studenti LEFT JOIN esami ... JOIN corsi ON e.corso = c.codice`: il secondo join (interno) scarta gli studenti senza esami, perché `e.corso` è `NULL`. Usare `LEFT JOIN` anche per le tabelle successive.
+
+#### e. `NULL` nelle colonne di join
+
+`NULL = NULL` non è vero: righe con la colonna di join a `NULL` **non si abbinano mai** (né tra loro né con altro). In un outer join compaiono solo come righe "senza corrispondenza".
+
+#### f. Trappole del `NATURAL JOIN`
+
+- Confronta **tutte** le colonne omonime, anche quelle che non c'entrano: `studenti NATURAL JOIN corsi` confronta `nome` (nome dello studente = nome del corso!) → risultato vuoto o sbagliato.
+- Se **non ci sono colonne in comune** diventa un **prodotto cartesiano**, senza errori.
+- Aggiungere una colonna allo schema può cambiare in silenzio il risultato. Preferire `JOIN ... ON` o `USING`.
+
+#### g. Errori di sintassi frequenti
+
+| Errore | Causa |
+| --- | --- |
+| `il riferimento alla colonna "b" è ambiguo` | colonna presente in più tabelle senza prefisso |
+| `errore di sintassi` con `FROM t1 JOIN t2;` | `JOIN` (non `CROSS`/`NATURAL`) senza `ON` o `USING` |
+| `riferimento non valido all'elemento della clausola FROM per la tabella "t1"` | uso del nome originale dopo aver definito un alias, oppure un `ON` che fa riferimento a una tabella separata da virgola (`FROM t1, t2 JOIN t3 ON t1.x = ...`) |
+
+Per l'ultimo caso: non mescolare virgole e `JOIN` espliciti, scegliere una sola sintassi.
+
+### 8. Riepilogo: quale join usare
+
+| La traccia chiede… | Soluzione |
+| --- | --- |
+| dati collegati presenti in entrambe le tabelle | `JOIN ... ON` |
+| tutti gli X, anche quelli senza Y | `X LEFT JOIN Y` |
+| gli X **senza** Y | `LEFT JOIN ... WHERE Y.chiave IS NULL` oppure `NOT EXISTS` |
+| per ogni X il numero di Y (anche 0) | `LEFT JOIN` + `GROUP BY` + `COUNT(Y.colonna)` → [[Raggruppamento (GROUP BY e HAVING)]] |
+| coppie di elementi della stessa tabella | self join con `<` |
+
+Altri schemi ricorrenti → [[Pattern di query]].

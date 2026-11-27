@@ -276,7 +276,7 @@ Tre tipi di processi di gestione dell'informazione:
 - Indizi per aiutare il ricordo: uso di **categorie**, **visualizzazione**.
 
 > [!important] Riconoscimento > ricordo
-> È il motivo per cui le **GUI** (menu, icone, liste visibili) sono più facili da imparare delle **interfacce a riga di comando** (dove bisogna ricordare il nome del comando). È anche una delle euristiche di Nielsen: *"Recognition rather than recall"*.
+> È il motivo per cui le **GUI** (menu, icone, liste visibili) sono più facili da imparare delle **interfacce a riga di comando** (dove bisogna ricordare il nome del comando).
 
 ## Riferimenti
 - Gamberini, Chittaro, Paternò – *Human Computer Interaction*, Pearson 2012, cap. 3 e 4

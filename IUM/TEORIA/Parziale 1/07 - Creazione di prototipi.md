@@ -14,7 +14,7 @@ tags: [IUM, teoria, parziale1, prototipi]
 - Supportare il design con i prototipi
 
 > [!tip] Approfondimento – Design concettuale e design fisico
-> Sono nominati nell'indice ma le relative slide sono nascoste; ecco una definizione sintetica (Preece, Rogers, Sharp):
+> Sono nominati nell'indice della presentazione ma non vengono sviluppati in nessuna slide; ecco una definizione sintetica (Preece, Rogers, Sharp):
 > - **Design concettuale**: definire *cosa* farà il prodotto e *come* si comporterà a livello astratto → il **modello concettuale** (concetti, oggetti e relazioni che l'utente deve capire, tipo di interazione, metafore — vedi [[13 - Pensiero, ragionamento e metafore]]).
 > - **Design fisico**: dare forma concreta al modello concettuale → schermate, layout, colori, icone, suoni, dispositivi di input/output, dimensioni dei controlli.
 

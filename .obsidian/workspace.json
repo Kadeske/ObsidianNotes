@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "293654efdc541f22",
+        "id": "023c1c8440927106",
         "type": "tabs",
         "children": [
           {
-            "id": "f6507a45dafdee78",
+            "id": "f55445742053bd01",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "11 - Udito, Tatto e Movimento"
-            }
-          },
-          {
-            "id": "494c1e80e20a5f00",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
+                "file": "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "13 - Pensiero, ragionamento e metafore"
-            }
-          },
-          {
-            "id": "d30ff593f6b36d0e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "08 - Architettura dell'Informazione"
-            }
-          },
-          {
-            "id": "ad216b9cb320ba75",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "05 - Requisiti e Personas"
+              "title": "00 - Indice Parziale 1"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -142,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
+                "file": "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -161,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
+                "file": "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -204,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
+                "file": "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -249,6 +206,10 @@
                     {
                       "tabId": "tab-1795083181042-4agbtec",
                       "conversationId": "conv-1795083995409-ktalevfsb"
+                    },
+                    {
+                      "tabId": "tab-1795616907074-024l4v3",
+                      "conversationId": "conv-1795617572944-3mgbrf5ni"
                     }
                   ],
                   "activeTabId": "tab-1795083181042-4agbtec"
@@ -259,11 +220,11 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 464.01171875
+    "width": 369.5211181640625
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -279,34 +240,43 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "d30ff593f6b36d0e",
+  "active": "f55445742053bd01",
   "lastOpenFiles": [
-    "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md",
-    "IUM/TEORIA/Parziale 1/06 - Scenari.md",
-    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
-    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md.tmp.145020.9d97244ffb01",
     "IUM/TEORIA/Parziale 1/04 - Interaction Design.md",
-    "IUM/TEORIA/Parziale 1/03 - Definizioni e Terminologia.md",
+    "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md",
+    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md",
+    "IUM/TEORIA/Domande/IUM_primo_parziale_VECCHIO_PROGRAMMA.json",
+    "IUM/TEORIA/Domande/IUM_primo_parziale_fuori_corso.json",
+    "IUM/TEORIA/Domande/IUM_primo_parziale_valide.json",
+    "IUM/TEORIA/Domande",
+    "DB/LAB/Selezione.md",
+    "DB/LAB/Selezione.md.tmp.382737.4f3e443e3fb6",
+    "DB/LAB/00 - Indice.md",
+    "DB/LAB/Creazione tabelle.md",
+    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md",
+    "DB/LAB/Domini e schemi.md",
+    "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
+    "DB/LAB/Funzioni aggregate.md",
+    "DB/LAB/Raggruppamento (GROUP BY e HAVING).md",
+    "DB/LAB/Operazioni di combinazione.md",
+    "DB/LAB/Pattern di query.md",
+    "DB/LAB/Funzioni aggregate.md.tmp.42248.1a16d09388c1",
+    "DB/LAB/Eliminazione di oggetti (DROP).md",
+    "DB/LAB/Query nidificate.md",
+    "DB/LAB/Vincoli di integrità referenziale.md",
+    "DB/LAB/Alter tabelle.md.tmp.20693.2ddfe9ceaabc",
+    "DB/LAB/Operazioni di combinazione.md.tmp.20693.f92c35dd1a70",
+    "DB/LAB/Selezione.md.tmp.20693.cd0fbaccd6a1",
+    "DB/LAB/Alter tabelle.md.tmp.20693.4c78a04d51a7",
+    "DB/LAB/Viste.md",
+    "DB/LAB/Operatori insiemistici.md",
+    "DB/LAB/NULL e logica a tre valori.md",
     "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md",
     "IUM/TEORIA/Parziale 1/12 - Memoria.md",
-    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md",
-    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.136394.6ce878144cb5",
     "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md",
+    "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md",
     "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md",
-    "IUM/TEORIA/Parziale 1/Riassunto complessivo.md",
-    "IUM/TEORIA/Parziale 1/02 - Perché studiare HCI.md",
-    "IUM/TEORIA/Parziale 1/01 - Introduzione al corso.md",
     "IUM/TEORIA/Parziale 1/08 - Architettura dell'Informazione.md",
-    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md",
-    "IUM/TEORIA/Parziale 1/00 - Indice Parziale 1.md.tmp.4489.b3f04478896e",
-    "IUM/TEORIA/Parziale 1/13 - Pensiero, ragionamento e metafore.md.tmp.4489.c2f491a43001",
-    "IUM/TEORIA/Parziale 1/12 - Memoria.md.tmp.4489.08a458a658ff",
-    "IUM/TEORIA/Parziale 1/11 - Udito, Tatto e Movimento.md.tmp.4489.65a3897a3eeb",
-    "IUM/TEORIA/Parziale 1/10 - Il processo di lettura.md.tmp.4489.c200deb91f42",
-    "IUM/TEORIA/Parziale 1/09 - La componente umana - Percezione visiva.md.tmp.4489.b4e4137077e4",
-    "IUM/TEORIA/Parziale 1/07 - Creazione di prototipi.md.tmp.4489.5dabb85445c2",
-    "IUM/TEORIA/Parziale 1/05 - Requisiti e Personas.md.tmp.4489.b0863bc7989f",
-    "IUM/TEORIA/Link-Slide-Teoria.md",
     "IUM/TEORIA/Parziale 1/img/ium_p13_s22.jpg",
     "IUM/TEORIA/Parziale 1/img/ium_p12_s12.jpg",
     "IUM/TEORIA/Parziale 1/img/ium_p12_s03.jpg",
@@ -316,15 +286,6 @@
     "IUM/TEORIA/Parziale 1/img/ium_p10_s21.jpg",
     "IUM/TEORIA/Parziale 1/img/ium_p10_s13.jpg",
     "IUM/TEORIA/Parziale 1/img/ium_p09_s29.jpg",
-    "IUM/TEORIA/Parziale 1/img/ium_p09_s28.jpg",
-    "DB/TEORIA/Dispense_algebra_relazionale.md",
-    "DB/TEORIA/Esercizi_algebra_esami_passati.md",
-    "DB/TEORIA/04 - Architettura fisica dei DBMS.md",
-    "DB/TEORIA/06 - Database per Big Data ed AI.md",
-    "DB/TEORIA/05 - Caratteristiche evolute dei DBMS.md",
-    "DB/TEORIA/Esami_passati_DB.md",
-    "DB/TEORIA/02 - DBMS e Modello Relazionale.md",
-    "DB/TEORIA/Schema concettuale, logico ed esterno.md",
-    "DB/TEORIA/03 - Algebra relazionale.md"
+    "IUM/TEORIA/Parziale 1/img/ium_p09_s28.jpg"
   ]
 }
